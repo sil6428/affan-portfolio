@@ -64,7 +64,7 @@ npm test
 ## Content notes
 
 - Archtech work covers Google Workspace, website-team coordination, hosting, and deployment for a developing nonprofit. Its source and internal work remain private.
-- SSIK IT Consulting & Solutions was co-founded with Ghayas Sher. We share service planning, security-control research, privacy research, and stakeholder communication. I independently built and maintain its public website.
+- SSIK IT Consulting & Solutions was co-founded with Ghayas Sher. We share service planning, security-control research, privacy research, and stakeholder communication. I independently built and maintain its public website and completed a private, local-first internal intelligence platform with passive collection, evidence review, role-based access, bounded automation, recovery controls, and 79 automated tests. The private source is intentionally not linked.
 - The public portfolio and public resume do not expose a phone number. Application-specific resume copies retain it.
 
 ## References and assets

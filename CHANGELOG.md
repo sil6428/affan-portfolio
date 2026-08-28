@@ -2,6 +2,12 @@
 
 This file summarizes meaningful public milestones. Detailed implementation notes remain in the [learning log](https://github.com/sil6428/learning-log).
 
+## 2026-08-28
+
+- Added the completed private SSIK Intelligence V1 to the SSIK case study, AFFAN_OS, room view, skills evidence, and experience record.
+- Recorded its 12-stage delivery, passive-only safety boundaries, evidence and approval workflow, recovery controls, and 79 passing tests without exposing the private repository.
+- Synchronized the public learning log and refreshed the public resume.
+
 ## 2026-08-23
 
 - Corrected project ownership and public degree wording.

@@ -71,6 +71,9 @@ test("renders SSIK's shared co-founder responsibilities and Affan's additional w
   assert.match(html, /GitHub Pages/);
   assert.match(html, /share SSIK's co-founder, consulting, security-assessment, privacy-research, and stakeholder-communication responsibilities/i);
   assert.match(html, /In addition to that shared work/i);
+  assert.match(html, /12-stage local V1/i);
+  assert.match(html, /79 automated tests/i);
+  assert.match(html, /outbound delivery disabled/i);
   assert.match(html, /sil6428\.github\.io\/SSIK-website/);
 });
 
@@ -544,13 +547,14 @@ test("includes the device-local soundtrack and hidden terminal", async () => {
   assert.match(desktopOs, /Archtech Operations\.project/);
   assert.match(desktopOs, /SSIK Consulting\.project/);
   assert.match(desktopOs, /Ghayas Sher/);
-  assert.match(desktopOs, /multi-page public website/);
+  assert.match(desktopOs, /private, local-first SSIK Intelligence V1 platform/);
+  assert.match(desktopOs, /79 automated tests/);
   assert.match(desktopOs, /sil6428\.github\.io\/SSIK-website/);
   assert.match(desktopOs, /File Integrity Monitor\.py/);
   assert.match(desktopOs, /github\.com\/sil6428\/file-integrity-monitor/);
   assert.match(desktopOs, /Event Planner\.js/);
   assert.match(desktopOs, /Resume\.pdf/);
-  assert.match(desktopOs, /Affan_Shaikh_Resume\.pdf\?v=2026-08-23-public#view=FitH/);
+  assert.match(desktopOs, /Affan_Shaikh_Resume\.pdf\?v=2026-08-28-ssik-v1#view=FitH/);
   assert.match(desktopOs, /Affan Shaikh resume PDF/);
   assert.match(desktopOs, /Ontario Tech\.txt/);
   assert.match(desktopOs, /Security\+\.plan/);

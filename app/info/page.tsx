@@ -18,7 +18,7 @@ const timeline = [
     role: "Co-Founder and Website Developer",
     place: "SSIK IT Consulting & Solutions · Ontario",
     date: "05/2026 — Present",
-    detail: "Co-founded SSIK with Ontario Tech classmate Ghayas Sher. We share consulting, security assessment, privacy research, and stakeholder responsibilities; I also independently built and published the multi-page company website.",
+    detail: "Co-founded SSIK with Ontario Tech classmate Ghayas Sher. We share consulting, security assessment, privacy research, and stakeholder responsibilities. I independently built the public website and a private, local-first internal research platform verified by 79 automated tests.",
   },
   {
     role: "Technical Operations and Hosting",
@@ -82,7 +82,7 @@ export default function Info() {
             </p>
             <p>
               I co-founded SSIK with my Ontario Tech classmate Ghayas Sher. We share its consulting, security, privacy,
-              and stakeholder responsibilities, and I independently built its public website. I also handle Google Workspace and website hosting for a developing
+              and stakeholder responsibilities. I independently built its public website and private SSIK Intelligence V1 platform. I also handle Google Workspace and website hosting for a developing
               nonprofit while preparing for the CompTIA Security+ certification.
             </p>
           </div>
@@ -138,7 +138,7 @@ export default function Info() {
           <a href="mailto:ffaanshake@gmail.com">Email <Arrow /></a>
           <a href="https://www.linkedin.com/in/sil6428" target="_blank" rel="noreferrer">LinkedIn <Arrow /></a>
           <a href="https://github.com/sil6428" target="_blank" rel="noreferrer">GitHub <Arrow /></a>
-          <a href="/Affan_Shaikh_Resume.pdf?v=2026-08-23-public" target="_blank">Resume <Arrow /></a>
+          <a href="/Affan_Shaikh_Resume.pdf?v=2026-08-28-ssik-v1" target="_blank">Resume <Arrow /></a>
         </div>
       </section>
 

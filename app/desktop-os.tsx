@@ -79,7 +79,7 @@ const baseFolders: Record<StaticFolderId, FolderContent> = {
     title: "Projects",
     path: "/home/affan/Projects",
     items: [
-      { id: "ssik", label: "SSIK Consulting.project", meta: "Co-founder + website", icon: "code", view: { kind: "document", id: "ssik" } },
+      { id: "ssik", label: "SSIK Consulting.project", meta: "Private platform + website", icon: "code", view: { kind: "document", id: "ssik" } },
       { id: "archtech", label: "Archtech Operations.project", meta: "Nonprofit technology", icon: "code", view: { kind: "document", id: "archtech" } },
       { id: "portfolio", label: "Portfolio.repo", meta: "Three.js + React", icon: "code", view: { kind: "document", id: "portfolio" } },
       { id: "cicids2017", label: "CICIDS2017.research", meta: "Security data audit", icon: "code", view: { kind: "document", id: "cicids2017" } },
@@ -210,13 +210,15 @@ const baseDocuments: Record<StaticDocumentId, DocumentContent> = {
   },
   ssik: {
     title: "SSIK Consulting.project",
-    type: "IT and cybersecurity consulting · Co-founder · Active",
-    intro: "I co-founded SSIK with Ghayas Sher, an Ontario Tech classmate. We share the consulting and security responsibilities, and I independently designed, built, published, and maintain its multi-page public website.",
+    type: "IT and cybersecurity consulting · Co-founder · Platform builder",
+    intro: "I co-founded SSIK with Ghayas Sher, an Ontario Tech classmate. We share the consulting and security responsibilities. I independently built its public website and the private, local-first SSIK Intelligence V1 platform.",
     bullets: [
       "Jointly develop service scopes and security-control review methods for authorized future engagements",
       "Share privacy and regulatory research and translate findings into clear stakeholder recommendations",
-      "Translated the service offering into clear client-facing website content",
-      "Built the complete public front end and responsive page system",
+      "Built a 12-stage internal workflow for passive research, evidence review, approvals, rescans, and recovery",
+      "Implemented multi-workspace RBAC, durable jobs, SSRF defenses, audit history, and bounded runtime controls",
+      "Verified the private V1 with 79 automated tests plus lint, type, migration, integrity, and secret checks",
+      "Built the complete public front end and responsive website",
       "Maintain the GitHub Pages deployment",
     ],
     links: [
@@ -280,7 +282,7 @@ const baseDocuments: Record<StaticDocumentId, DocumentContent> = {
       "Git and GitHub · Managed private team development, backup branches, documentation, version history, tests, and public portfolio source",
       "Linux and virtualization · Use Linux tools in coursework and personal systems work while converting older computers into a Proxmox home lab for virtual machines and isolated networks",
       "Google Workspace and web operations · Set up a nonprofit's Workspace environment, coordinate its website team, and own the website hosting and deployment workflow",
-      "IT consulting and web delivery · Co-founded SSIK with an Ontario Tech classmate, share security-assessment and privacy-research responsibilities, and independently built and published the multi-page company website",
+      "IT consulting and platform delivery · Co-founded SSIK with an Ontario Tech classmate, share security-assessment and privacy-research responsibilities, independently built the public website, and delivered a private local-first research platform with 79 automated tests",
       "Systems tools · Worked with Windows Server, Cisco Packet Tracer, Wireshark, SecureCRT, and GitHub across labs and projects",
       "Communication and operations · Applied customer support, transaction accuracy, crowd flow, event coordination, conflict resolution, and team communication through paid and volunteer experience",
     ],
@@ -315,7 +317,7 @@ const baseDocuments: Record<StaticDocumentId, DocumentContent> = {
     intro: "My experience combines technical operations, business-building, customer service, communication, and responsibility in fast-moving environments.",
     bullets: [
       "Co-Founder and Website Developer · SSIK IT Consulting & Solutions · May 2026 to present",
-      "Co-founded SSIK with Ontario Tech classmate Ghayas Sher; share consulting, security assessment, privacy research, and stakeholder responsibilities; independently built the multi-page public website",
+      "Co-founded SSIK with Ontario Tech classmate Ghayas Sher; share consulting, security assessment, privacy research, and stakeholder responsibilities; independently built the public website and private SSIK Intelligence V1 platform",
       "Technical Operations and Hosting · Archtech · 2026 to present",
       "Set up Google Workspace, coordinate the website team, and manage hosting and deployment for a developing nonprofit",
       "Sales Associate · Oshawa, Ontario · May 2025 to present",
@@ -945,10 +947,10 @@ export default function DesktopOs({ onExit }: { onExit: () => void }) {
             <div className="affan-os-resume-viewer">
               <nav aria-label="Resume controls">
                 <div><strong>Affan_Shaikh_Resume.pdf</strong><span>1 page</span></div>
-                <a href="/Affan_Shaikh_Resume.pdf?v=2026-08-23-public" target="_blank" rel="noreferrer">Open full size <ExternalMark /></a>
-                <a href="/Affan_Shaikh_Resume.pdf?v=2026-08-23-public" download>Download PDF</a>
+                <a href="/Affan_Shaikh_Resume.pdf?v=2026-08-28-ssik-v1" target="_blank" rel="noreferrer">Open full size <ExternalMark /></a>
+                <a href="/Affan_Shaikh_Resume.pdf?v=2026-08-28-ssik-v1" download>Download PDF</a>
               </nav>
-              <iframe src="/Affan_Shaikh_Resume.pdf?v=2026-08-23-public#view=FitH&toolbar=0" title="Affan Shaikh resume PDF" />
+              <iframe src="/Affan_Shaikh_Resume.pdf?v=2026-08-28-ssik-v1#view=FitH&toolbar=0" title="Affan Shaikh resume PDF" />
             </div>
           )}
 

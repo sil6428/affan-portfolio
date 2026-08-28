@@ -37,12 +37,12 @@ const ROOM_ENTRIES: Record<string, RoomEntry> = {
     directory: "Technology operations",
     label: "CO-FOUNDER / TECHNOLOGY OPERATIONS",
     title: "SSIK and Archtech",
-    summary: "Co-founding an IT consulting business alongside Google Workspace, website-team, and hosting work for a developing nonprofit.",
-    details: ["SSIK co-founder", "Independent website build", "Google Workspace", "Web hosting"],
+    summary: "Co-founding an IT consulting business, building its private intelligence platform, and managing Google Workspace and hosting for a developing nonprofit.",
+    details: ["SSIK co-founder", "Private platform V1", "79 tests", "Google Workspace"],
     sections: [
       {
         heading: "SSIK co-founder",
-        body: "I co-founded SSIK IT Consulting & Solutions with Ghayas Sher, an Ontario Tech classmate. We share consulting, security assessment, privacy research, and stakeholder responsibilities. I also independently designed, built, published, and maintain the multi-page public website.",
+        body: "I co-founded SSIK IT Consulting & Solutions with Ghayas Sher, an Ontario Tech classmate. We share consulting, security assessment, privacy research, and stakeholder responsibilities. I independently built the public website and the private, local-first SSIK Intelligence V1 platform. Its passive research, evidence review, role-based access, approval, rescan, and recovery workflows passed 79 automated tests.",
       },
       {
         heading: "Archtech operations",
@@ -203,7 +203,7 @@ const ROOM_ENTRIES: Record<string, RoomEntry> = {
       { label: "GitHub", href: "https://github.com/sil6428" },
       { label: "LinkedIn", href: "https://www.linkedin.com/in/sil6428" },
       { label: "Email", href: "mailto:ffaanshake@gmail.com" },
-      { label: "Resume", href: "/Affan_Shaikh_Resume.pdf?v=2026-08-23-public" },
+      { label: "Resume", href: "/Affan_Shaikh_Resume.pdf?v=2026-08-28-ssik-v1" },
     ],
     cameraOffset: [0, 0.1, 3.05],
     targetOffset: [0, 0, 0],
@@ -242,7 +242,7 @@ const ROOM_ENTRIES: Record<string, RoomEntry> = {
         body: "The resume covers my cybersecurity projects, networking skills, SSIK co-founder and website work, nonprofit technology operations, customer-facing experience, and community volunteering.",
       },
     ],
-    links: [{ label: "Open resume PDF", href: "/Affan_Shaikh_Resume.pdf?v=2026-08-23-public" }],
+    links: [{ label: "Open resume PDF", href: "/Affan_Shaikh_Resume.pdf?v=2026-08-28-ssik-v1" }],
     cameraOffset: [0, 0.1, 3.05],
     targetOffset: [0, 0, 0],
   },
