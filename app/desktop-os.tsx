@@ -460,12 +460,29 @@ function ExternalMark() {
   return <span className="affan-os-external" aria-hidden="true">↗</span>;
 }
 
+function safeMarkdownHref(value: string): string | null {
+  const trimmed = value.trim();
+  if (/[\\\u0000-\u001f\u007f]/.test(trimmed)) return null;
+  if ((trimmed.startsWith("/") && !trimmed.startsWith("//")) || trimmed.startsWith("#")) {
+    return trimmed;
+  }
+  try {
+    const url = new URL(trimmed);
+    return url.protocol === "https:" || url.protocol === "http:" ? url.href : null;
+  } catch {
+    return null;
+  }
+}
+
 function renderInlineMarkdown(value: string): ReactNode[] {
   return value.split(/(\*\*[^*]+\*\*|`[^`]+`|\[[^\]]+\]\([^)]+\)|<https?:\/\/[^>]+>)/g).filter(Boolean).map((part, index) => {
     if (part.startsWith("**") && part.endsWith("**")) return <strong key={`${part}-${index}`}>{part.slice(2, -2)}</strong>;
     if (part.startsWith("`") && part.endsWith("`")) return <code key={`${part}-${index}`}>{part.slice(1, -1)}</code>;
     const markdownLink = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
-    if (markdownLink) return <a href={markdownLink[2]} target="_blank" rel="noreferrer" key={`${part}-${index}`}>{markdownLink[1]}<span className="sr-only"> (opens in a new tab)</span></a>;
+    if (markdownLink) {
+      const href = safeMarkdownHref(markdownLink[2]);
+      return href ? <a href={href} target="_blank" rel="noreferrer" key={`${part}-${index}`}>{markdownLink[1]}<span className="sr-only"> (opens in a new tab)</span></a> : markdownLink[1];
+    }
     if (part.startsWith("<http") && part.endsWith(">")) {
       const href = part.slice(1, -1);
       return <a href={href} target="_blank" rel="noreferrer" key={`${part}-${index}`}>{href}<span className="sr-only"> (opens in a new tab)</span></a>;

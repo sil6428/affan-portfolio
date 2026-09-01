@@ -16,6 +16,10 @@ async function render(path = "/") {
 test("renders the full-screen interactive portfolio", async () => {
   const response = await render();
   assert.equal(response.status, 200);
+  assert.equal(response.headers.get("x-content-type-options"), "nosniff");
+  assert.equal(response.headers.get("x-frame-options"), "DENY");
+  assert.match(response.headers.get("content-security-policy") ?? "", /object-src 'none'/);
+  assert.match(response.headers.get("permissions-policy") ?? "", /camera=\(\)/);
   const html = await response.text();
   assert.match(html, /Affan Shaikh/);
   assert.match(html, /AFFAN_OS \/ INTERACTIVE PORTFOLIO/);
@@ -221,6 +225,9 @@ test("includes the device-local soundtrack and hidden terminal", async () => {
   const desktopOs = await import("node:fs/promises").then(({ readFile }) =>
     readFile(new URL("../app/desktop-os.tsx", import.meta.url), "utf8"),
   );
+  assert.match(desktopOs, /function safeMarkdownHref/);
+  assert.match(desktopOs, /test\(trimmed\)\) return null/);
+  assert.match(desktopOs, /url\.protocol === "https:" \|\| url\.protocol === "http:"/);
   const learningLog = await import("node:fs/promises").then(({ readFile }) =>
     readFile(new URL("../app/learning-log-data.generated.ts", import.meta.url), "utf8"),
   );
