@@ -11,7 +11,8 @@ type StaticDocumentId =
   | "archtech"
   | "ssik"
   | "portfolio"
-  | "cicids2017"
+  | "secure-file-transfer"
+  | "secure-messaging"
   | "file-integrity-monitor"
   | "event-planner"
   | "skills"
@@ -61,7 +62,7 @@ const baseFolders: Record<StaticFolderId, FolderContent> = {
     title: "Home",
     path: "/home/affan",
     items: [
-      { id: "projects", label: "Projects", meta: "6 items", icon: "folder", view: { kind: "folder", id: "projects" } },
+      { id: "projects", label: "Projects", meta: "7 items", icon: "folder", view: { kind: "folder", id: "projects" } },
       { id: "networking", label: "Network Labs", meta: "2 files", icon: "folder", view: { kind: "folder", id: "networking" } },
       { id: "education", label: "Education", meta: "2 files", icon: "folder", view: { kind: "folder", id: "education" } },
       { id: "experience", label: "Experience", meta: "2 files · 4 roles", icon: "folder", view: { kind: "folder", id: "experience" } },
@@ -82,7 +83,8 @@ const baseFolders: Record<StaticFolderId, FolderContent> = {
       { id: "ssik", label: "SSIK Consulting.project", meta: "Private platform + website", icon: "code", view: { kind: "document", id: "ssik" } },
       { id: "archtech", label: "Archtech Operations.project", meta: "Nonprofit technology", icon: "code", view: { kind: "document", id: "archtech" } },
       { id: "portfolio", label: "Portfolio.repo", meta: "Three.js + React", icon: "code", view: { kind: "document", id: "portfolio" } },
-      { id: "cicids2017", label: "CICIDS2017.research", meta: "Security data audit", icon: "code", view: { kind: "document", id: "cicids2017" } },
+      { id: "secure-transfer", label: "Secure File Transfer.py", meta: "TLS + verified transfer", icon: "code", view: { kind: "document", id: "secure-file-transfer" } },
+      { id: "secure-messaging", label: "Secure Messaging Platform.wip", meta: "Private · work in progress", icon: "code", view: { kind: "document", id: "secure-messaging" } },
       { id: "integrity", label: "File Integrity Monitor.py", meta: "Python + SHA-256", icon: "code", view: { kind: "document", id: "file-integrity-monitor" } },
       { id: "events", label: "Event Planner.js", meta: "JavaScript", icon: "code", view: { kind: "document", id: "event-planner" } },
     ],
@@ -233,18 +235,29 @@ const baseDocuments: Record<StaticDocumentId, DocumentContent> = {
     bullets: ["Three.js room and custom models", "Canvas-rendered monitor states", "Keyboard and touch support", "Automated route and content checks"],
     links: [{ label: "View repository", href: "https://github.com/sil6428/affan-portfolio" }],
   },
-  cicids2017: {
-    title: "CICIDS2017.research",
-    type: "Research project · Cybersecurity dataset audit",
-    intro: "A reproducible audit and split-sensitivity study of the CICIDS2017 intrusion-detection dataset. I cleaned and traced the public CSV data, reproduced a Random Forest baseline, and tested how the evaluation changes when source files are held out.",
+  "secure-file-transfer": {
+    title: "Secure File Transfer.py",
+    type: "Private security project · Python + TLS",
+    intro: "A completed authenticated file-transfer service that verifies the server identity, isolates each recipient's storage, resumes interrupted transfers, and checks file integrity before a download is accepted.",
     bullets: [
-      "Audited 2,830,743 network-flow records and 79 columns across eight source files",
-      "Removed 2,867 rows containing invalid values and retained 2,827,876 clean flows with 77 model features",
-      "Measured 99.5721% mean random-split accuracy across three seeds on a deterministic 239,603-row sample",
-      "Measured 20.7831% accuracy under leave-one-source-file-out evaluation, exposing a 78.7889 percentage-point split sensitivity",
-      "Built 14 automated tests and published the full method, limitations, reports, and generated JSON evidence",
+      "Uses authenticated TLS with certificate and hostname verification plus scrypt password records",
+      "Resumes uploads and downloads from verified byte offsets and restricts files to recipient-scoped storage",
+      "Re-hashes stored files before download, verifies the receiver's final SHA-256 digest, and quarantines mismatches",
+      "Verified 8 upload/download round trips totaling 13,632,512 bytes and resumed a 2,097,152-byte upload after a 700,000-byte interruption",
+      "Passed 13 automated tests covering authentication, isolation, traversal attempts, interruption, and tampering",
     ],
-    links: [{ label: "View public research repository", href: "https://github.com/sil6428/cicids2017-reproduction" }],
+  },
+  "secure-messaging": {
+    title: "Secure Messaging Platform.wip",
+    type: "Private work in progress · FastAPI + SQLite",
+    intro: "An explicitly unfinished messaging platform that will combine authenticated conversations with verified attachments. It is shown here as a development record, not as a completed secure product.",
+    bullets: [
+      "Current milestone: application shell, versioned schema, threat model, and roadmap",
+      "Schema establishes users, sessions, conversations, membership, messages, attachments, and audit events",
+      "Passed 4 foundation tests for status reporting, schema creation, idempotent initialization, and foreign-key enforcement",
+      "Planned sequence: accounts and sessions, direct messages, real-time delivery, verified attachments, integrity warnings, then hardening",
+      "Private source and unfinished features are intentionally not linked from this public portfolio",
+    ],
   },
   "file-integrity-monitor": {
     title: "File Integrity Monitor.py",
@@ -272,7 +285,7 @@ const baseDocuments: Record<StaticDocumentId, DocumentContent> = {
       "Networking · Configured IPv4 and IPv6 addressing, subnetting, VLANs, access ports, 802.1Q trunks, DHCP, DNS, NAT, STP, and inter-VLAN routing in Cisco IOS and Packet Tracer labs",
       "Troubleshooting · Used ping, traceroute, show commands, Wireshark, packet captures, routing tables, and interface state to isolate connectivity and configuration problems",
       "Cybersecurity · Applied authentication, authorization, role-based access control, encryption, hashing, and vulnerability analysis through security coursework and personal projects",
-      "Security data research · Audited 2,830,743 CICIDS2017 flows, built deterministic cleaning and sampling pipelines, reproduced Random Forest baselines, measured split sensitivity, and documented limitations through 14 automated tests",
+      "Secure transfer · Built authenticated TLS transfers with certificate and hostname verification, resumable byte offsets, recipient isolation, SHA-256 re-hashing, mismatch quarantine, and 13 automated tests",
       "Python · Built a SHA-256 file integrity monitor with deterministic baselines, JSON reports, four change categories, script-friendly exit codes, and 7 automated tests",
       "JavaScript and DOM · Built an event-planning tool that adds, edits, displays, and removes events while keeping the page state synchronized",
       "TypeScript and React · Built AFFAN_OS, the portfolio interface, reusable components, window state, keyboard interactions, and accessible controls",
@@ -947,10 +960,10 @@ export default function DesktopOs({ onExit }: { onExit: () => void }) {
             <div className="affan-os-resume-viewer">
               <nav aria-label="Resume controls">
                 <div><strong>Affan_Shaikh_Resume.pdf</strong><span>1 page</span></div>
-                <a href="/Affan_Shaikh_Resume.pdf?v=2026-09-01-clear-project" target="_blank" rel="noreferrer">Open full size <ExternalMark /></a>
-                <a href="/Affan_Shaikh_Resume.pdf?v=2026-09-01-clear-project" download>Download PDF</a>
+                <a href="/Affan_Shaikh_Resume.pdf?v=2026-09-01-secure-transfer" target="_blank" rel="noreferrer">Open full size <ExternalMark /></a>
+                <a href="/Affan_Shaikh_Resume.pdf?v=2026-09-01-secure-transfer" download>Download PDF</a>
               </nav>
-              <iframe src="/Affan_Shaikh_Resume.pdf?v=2026-09-01-clear-project#view=FitH&toolbar=0" title="Affan Shaikh resume PDF" />
+              <iframe src="/Affan_Shaikh_Resume.pdf?v=2026-09-01-secure-transfer#view=FitH&toolbar=0" title="Affan Shaikh resume PDF" />
             </div>
           )}
 

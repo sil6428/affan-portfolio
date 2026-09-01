@@ -2,6 +2,13 @@
 
 This file summarizes meaningful public milestones. Detailed implementation notes remain in the [learning log](https://github.com/sil6428/learning-log).
 
+## 2026-09-01
+
+- Replaced the CICIDS2017 project in current career surfaces with the completed private Secure File Transfer project.
+- Added measured transfer, interruption-recovery, authentication, tamper-detection, and automated-test evidence without exposing private source links.
+- Added the Secure Messaging Platform to AFFAN_OS as an explicitly private work in progress with its current foundation and planned milestone sequence.
+- Refreshed both one-page resume variants while keeping the application phone number out of the public portfolio copy.
+
 ## 2026-08-28
 
 - Added the completed private SSIK Intelligence V1 to the SSIK case study, AFFAN_OS, room view, skills evidence, and experience record.

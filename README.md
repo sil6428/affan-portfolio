@@ -65,6 +65,8 @@ npm test
 
 - Archtech work covers Google Workspace, website-team coordination, hosting, and deployment for a developing nonprofit. Its source and internal work remain private.
 - SSIK IT Consulting & Solutions was co-founded with Ghayas Sher. We share service planning, security-control research, privacy research, and stakeholder communication. I independently built and maintain its public website and completed a private, local-first internal intelligence platform with passive collection, evidence review, role-based access, bounded automation, recovery controls, and 79 automated tests. The private source is intentionally not linked.
+- Secure File Transfer is a completed private Python project covering authenticated TLS, certificate and hostname verification, recipient isolation, resumable transfers, SHA-256 verification, tamper quarantine, and 13 automated tests. Its source is intentionally not linked.
+- Secure Messaging Platform is identified as a private work in progress. The portfolio describes only its implemented foundation and planned milestones; it does not claim that unfinished messaging or security features are complete.
 - The public portfolio and public resume do not expose a phone number. Application-specific resume copies retain it.
 
 ## References and assets

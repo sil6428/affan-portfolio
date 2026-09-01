@@ -552,9 +552,17 @@ test("includes the device-local soundtrack and hidden terminal", async () => {
   assert.match(desktopOs, /sil6428\.github\.io\/SSIK-website/);
   assert.match(desktopOs, /File Integrity Monitor\.py/);
   assert.match(desktopOs, /github\.com\/sil6428\/file-integrity-monitor/);
+  assert.match(desktopOs, /Secure File Transfer\.py/);
+  assert.match(desktopOs, /13 automated tests/);
+  assert.match(desktopOs, /Secure Messaging Platform\.wip/);
+  assert.match(desktopOs, /Private · work in progress/);
+  assert.match(desktopOs, /explicitly unfinished messaging platform/);
+  assert.doesNotMatch(desktopOs, /CICIDS2017\.research/);
+  assert.doesNotMatch(desktopOs, /github\.com\/sil6428\/secure-file-transfer/);
+  assert.doesNotMatch(desktopOs, /github\.com\/sil6428\/secure-messaging-platform/);
   assert.match(desktopOs, /Event Planner\.js/);
   assert.match(desktopOs, /Resume\.pdf/);
-  assert.match(desktopOs, /Affan_Shaikh_Resume\.pdf\?v=2026-09-01-clear-project#view=FitH/);
+  assert.match(desktopOs, /Affan_Shaikh_Resume\.pdf\?v=2026-09-01-secure-transfer#view=FitH/);
   assert.match(desktopOs, /Affan Shaikh resume PDF/);
   assert.match(desktopOs, /Ontario Tech\.txt/);
   assert.match(desktopOs, /Security\+\.plan/);
