@@ -622,9 +622,16 @@ export default function DesktopOs({ onExit }: { onExit: () => void }) {
 
   const goBack = () => {
     const previous = history.at(-1);
-    if (!previous) return;
+    if (!previous) {
+      setView({ kind: "folder", id: "home" });
+      setMinimized(false);
+      setAnnouncement("Opened Home");
+      return;
+    }
     setView(previous);
     setHistory((current) => current.slice(0, -1));
+    const label = previous.kind === "folder" ? folders[previous.id].title : documents[previous.id].title;
+    setAnnouncement(`Returned to ${label}`);
   };
 
   const allLauncherItems = useMemo(() => [
@@ -915,6 +922,8 @@ export default function DesktopOs({ onExit }: { onExit: () => void }) {
   const activeFolder = view?.kind === "folder" ? folders[view.id] : null;
   const activeDocument = view?.kind === "document" ? documents[view.id] : null;
   const activeTitle = activeFolder?.title ?? activeDocument?.title ?? "AFFAN_OS";
+  const previousView = history.at(-1);
+  const documentParent = previousView?.kind === "folder" ? folders[previousView.id] : folders.home;
   const sortedFolderItems = activeFolder ? [...activeFolder.items].sort((a, b) => iconOrder[a.icon] - iconOrder[b.icon] || a.label.localeCompare(b.label)) : [];
 
   return (
@@ -1021,6 +1030,17 @@ export default function DesktopOs({ onExit }: { onExit: () => void }) {
               </div>
               <footer className="affan-os-statusbar"><span>{activeFolder.items.length} items</span><span>Icons view</span></footer>
             </>
+          )}
+
+          {activeDocument && (
+            <nav className="affan-os-toolbar affan-os-document-toolbar" aria-label="Document navigation">
+              <button className="affan-os-back-button" type="button" onClick={goBack}>
+                <span aria-hidden="true">←</span><span>Back</span>
+              </button>
+              <button type="button" onClick={() => openView({ kind: "folder", id: "home" })} aria-label="Home">⌂</button>
+              <div className="affan-os-path" aria-label={`Current document ${activeDocument.title}`}>{documentParent.path}/{activeDocument.title}</div>
+              <span>{view.kind === "document" && view.id === "terminal" ? "Interactive shell" : "Read only"}</span>
+            </nav>
           )}
 
           {activeDocument && view.kind === "document" && view.id === "resume" && (

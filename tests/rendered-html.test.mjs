@@ -619,6 +619,9 @@ test("includes the device-local soundtrack and hidden terminal", async () => {
   assert.match(desktopOs, /Minimize/);
   assert.match(desktopOs, /Maximize/);
   assert.match(desktopOs, /Return to 3D room/);
+  assert.match(desktopOs, /aria-label="Document navigation"/);
+  assert.match(desktopOs, /affan-os-back-button/);
+  assert.match(desktopOs, /Returned to \$\{label\}/);
   assert.match(desktopOs, /aria-live="polite"/);
 
   assert.match(styles, /room-fluid-hint/);
