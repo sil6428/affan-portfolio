@@ -14,6 +14,78 @@ export type TryHackMeEntry = {
 
 export const tryHackMeEntries = [
   {
+    id: "tryhackme-room-soc-role-in-blue-team",
+    date: "2026-09-05",
+    year: "2026",
+    month: "09",
+    monthLabel: "September",
+    title: "SOC Role in Blue Team",
+    itemType: "Room",
+    level: "Beginner SOC foundations",
+    summary:
+      "Reviewed where a security operations centre fits within a blue team and how analysts contribute to monitoring, investigation, escalation, and response.",
+    takeaways: [
+      "A SOC coordinates people, processes, and security technology rather than relying on one monitoring tool.",
+      "Analysts need to distinguish normal activity from events that deserve investigation or escalation.",
+      "Clear documentation and handoffs matter because incidents may move between analysts and specialist teams.",
+    ],
+    sourceUrl: "https://tryhackme.com/room/socroleinblueteam",
+  },
+  {
+    id: "tryhackme-room-soc-fundamentals",
+    date: "2026-09-05",
+    year: "2026",
+    month: "09",
+    monthLabel: "September",
+    title: "SOC Fundamentals",
+    itemType: "Room",
+    level: "Beginner SOC foundations",
+    summary:
+      "Built a clearer picture of SOC responsibilities, the flow from security telemetry to an alert, and the importance of consistent triage procedures.",
+    takeaways: [
+      "Security monitoring becomes useful when collected events have context and an analyst can prioritise them.",
+      "Triage should establish what happened, which systems or users are affected, and how urgent the event may be.",
+      "Repeatable procedures help analysts investigate consistently while preserving evidence for later review.",
+    ],
+    sourceUrl: "https://tryhackme.com/room/socfundamentals",
+  },
+  {
+    id: "tryhackme-room-junior-security-analyst-intro",
+    date: "2026-09-05",
+    year: "2026",
+    month: "09",
+    monthLabel: "September",
+    title: "Junior Security Analyst Intro",
+    itemType: "Room",
+    level: "Role introduction",
+    summary:
+      "Explored the day-to-day purpose of a junior security analyst and connected alert review, investigation, escalation, and communication into one workflow.",
+    takeaways: [
+      "An entry-level analyst is expected to investigate carefully and escalate with useful context, not solve every incident alone.",
+      "Networking and operating-system knowledge make logs and alerts easier to interpret.",
+      "Concise notes and evidence are part of the technical work because other responders depend on them.",
+    ],
+    sourceUrl: "https://tryhackme.com/room/jrsecanalystintrouxo",
+  },
+  {
+    id: "tryhackme-room-inside-a-computer",
+    date: "2026-09-05",
+    year: "2026",
+    month: "09",
+    monthLabel: "September",
+    title: "Inside a Computer",
+    itemType: "Room",
+    level: "Computer foundations",
+    summary:
+      "Refreshed how core computer components work together and why hardware, storage, memory, and operating-system context matter during troubleshooting and security analysis.",
+    takeaways: [
+      "Processor, memory, storage, and input/output components have different roles but operate as one system.",
+      "Understanding where data is processed and stored helps narrow down both technical failures and security evidence.",
+      "Strong security analysis still depends on accurate computing and operating-system fundamentals.",
+    ],
+    sourceUrl: "https://tryhackme.com/room/insideacomputer",
+  },
+  {
     id: "tryhackme-room-careers-in-cyber",
     date: "2026-09-04",
     year: "2026",

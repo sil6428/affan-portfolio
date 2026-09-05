@@ -13,6 +13,15 @@ export type LearningLogEntry = {
 
 export const learningLogEntries = [
   {
+    "id": "learning-log-entry-2026-09-05",
+    "date": "2026-09-05",
+    "year": "2026",
+    "month": "09",
+    "monthLabel": "September",
+    "title": "Built a foundation for junior SOC analysis",
+    "body": "## Session\n\n- **Area:** Computer fundamentals and security operations\n- **Time spent:** Four introductory TryHackMe rooms\n- **Goal:** Connect basic computer knowledge to the responsibilities and workflow of an entry-level SOC analyst.\n\n## Work completed\n\n- Completed TryHackMe's `Inside a Computer` room as a systems-foundation refresher.\n- Completed the `Junior Security Analyst Intro` room and reviewed the responsibilities of an entry-level analyst.\n- Completed `SOC Fundamentals` and studied how monitoring, alerts, triage, and escalation fit together.\n- Completed `SOC Role in Blue Team` and placed the SOC within a broader defensive-security function.\n- Recorded concepts and personal takeaways without publishing room answers, flags, or walkthrough instructions.\n\n## Evidence\n\n- [Inside a Computer](https://tryhackme.com/room/insideacomputer)\n- [Junior Security Analyst Intro](https://tryhackme.com/room/jrsecanalystintrouxo)\n- [SOC Fundamentals](https://tryhackme.com/room/socfundamentals)\n- [SOC Role in Blue Team](https://tryhackme.com/room/socroleinblueteam)\n- All four completions are listed in the September 2026 TryHackMe folder inside the portfolio's AFFAN_OS desktop.\n\n## What I learned\n\n- Hardware, memory, storage, operating systems, and networking provide the context needed to understand security telemetry.\n- A SOC combines people, procedures, and technology to monitor an environment and coordinate investigations.\n- A junior analyst needs to validate alerts, gather relevant context, document findings, and escalate when required.\n- Events and alerts are not automatically incidents; triage determines significance, scope, and urgency.\n- Documentation and consistent handoffs are part of incident response because multiple analysts or teams may work on the same case.\n- These introductory rooms strengthen my defensive-security direction, but deeper hands-on investigation labs are needed before claiming practical SOC proficiency.\n\n## Problem encountered\n\n- The rooms introduce several connected roles and concepts quickly, so the main challenge was separating introductory awareness from skills that I have actually practised hands-on.\n\n## Next step\n\n- Continue into log analysis, SIEM, alert-triage, and network-traffic labs, then document one original investigation in my own controlled home-lab environment.\n\n## Commit check\n\n- [x] This entry describes work completed today.\n- [x] Every link points to a public room page rather than an answer or walkthrough.\n- [x] No flags, solutions, credentials, secrets, or private personal data are included."
+  },
+  {
     "id": "learning-log-entry-2026-09-04",
     "date": "2026-09-04",
     "year": "2026",
