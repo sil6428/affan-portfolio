@@ -13,6 +13,15 @@ export type LearningLogEntry = {
 
 export const learningLogEntries = [
   {
+    "id": "learning-log-entry-2026-09-04",
+    "date": "2026-09-04",
+    "year": "2026",
+    "month": "09",
+    "monthLabel": "September",
+    "title": "Refreshed offensive and defensive security fundamentals",
+    "body": "## Session\n\n- **Area:** Foundational cybersecurity training\n- **Time spent:** Two introductory TryHackMe rooms\n- **Goal:** Restart at the beginner level and refresh the core ideas before moving into more involved labs.\n\n## Work completed\n\n- Completed TryHackMe's `Offensive Security Intro` room in its authorized training environment.\n- Completed TryHackMe's `Defensive Security Intro` room in its authorized training environment.\n- Recorded the completions separately from projects so introductory training is not presented as advanced experience.\n- Kept these notes limited to concepts and personal takeaways; no room answers, flags, or walkthrough steps are included.\n\n## Evidence\n\n- [Offensive Security Intro](https://tryhackme.com/room/offensivesecurityintrokKx12)\n- [Defensive Security Intro](https://tryhackme.com/room/defensivesecurityintroezn39)\n- Both completions are listed in the TryHackMe folder inside the portfolio's AFFAN_OS desktop.\n\n## What I learned\n\n- Offensive security looks for weaknesses from an attacker's perspective, but only within clearly authorized scope.\n- Defensive security focuses on visibility, analysis, prevention, and response when suspicious activity appears.\n- Red-team and blue-team fundamentals are easier to understand together because one side's actions explain what the other side needs to detect.\n- Introductory room completions show consistent practice, not advanced proficiency; deeper labs and original projects provide stronger evidence.\n\n## Problem encountered\n\n- The rooms are intentionally broad, so the useful challenge was identifying which ideas need deeper hands-on practice rather than treating completion as mastery.\n\n## Next step\n\n- Continue the foundational TryHackMe sequence, then practise the same concepts in original home-lab exercises that can be documented without exposing platform answers.\n\n## Commit check\n\n- [x] This entry describes work completed today.\n- [x] Every link points to a public room page rather than an answer or walkthrough.\n- [x] No flags, solutions, credentials, secrets, or private personal data are included."
+  },
+  {
     "id": "learning-log-entry-2026-08-28",
     "date": "2026-08-28",
     "year": "2026",

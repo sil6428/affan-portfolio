@@ -2,10 +2,12 @@
 
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { learningLogEntries } from "./learning-log-data.generated";
+import { tryHackMeEntries } from "./tryhackme-data";
 
 type StaticFolderId = "home" | "projects" | "networking" | "education" | "experience" | "interests" | "contact" | "inspiration";
 type LearningLogFolderId = "learning-log" | `learning-log-${string}-${string}`;
-type FolderId = StaticFolderId | LearningLogFolderId;
+type TryHackMeFolderId = "tryhackme" | `tryhackme-${string}-${string}`;
+type FolderId = StaticFolderId | LearningLogFolderId | TryHackMeFolderId;
 type StaticDocumentId =
   | "about"
   | "archtech"
@@ -30,7 +32,8 @@ type StaticDocumentId =
   | "resume"
   | "terminal";
 type LearningLogDocumentId = `learning-log-entry-${string}`;
-type DocumentId = StaticDocumentId | LearningLogDocumentId;
+type TryHackMeDocumentId = `tryhackme-room-${string}`;
+type DocumentId = StaticDocumentId | LearningLogDocumentId | TryHackMeDocumentId;
 
 type OsView =
   | { kind: "folder"; id: FolderId }
@@ -73,6 +76,7 @@ const baseFolders: Record<StaticFolderId, FolderContent> = {
       { id: "skills", label: "Skills.md", meta: "Markdown", icon: "code", view: { kind: "document", id: "skills" } },
       { id: "resume", label: "Resume.pdf", meta: "PDF document", icon: "pdf", view: { kind: "document", id: "resume" } },
       { id: "learning-log", label: "Learning Log", meta: `${learningLogEntries.length} public entries`, icon: "folder", view: { kind: "folder", id: "learning-log" } },
+      { id: "tryhackme", label: "TryHackMe", meta: `${tryHackMeEntries.length} completed rooms`, icon: "folder", view: { kind: "folder", id: "tryhackme" } },
       { id: "reading", label: "Reading-list.txt", meta: "Text document", icon: "text", view: { kind: "document", id: "reading" } },
     ],
   },
@@ -171,6 +175,7 @@ const learningLogFolders = Object.fromEntries([
         icon: "folder" as const,
         view: { kind: "folder" as const, id: `learning-log-${month.year}-${month.month}` as LearningLogFolderId },
       })),
+      { id: "tryhackme", label: "TryHackMe", meta: `${tryHackMeEntries.length} completed rooms`, icon: "folder" as const, view: { kind: "folder" as const, id: "tryhackme" as TryHackMeFolderId } },
       { id: "learning-log-repository", label: "Repository.url", meta: "Public source on GitHub", icon: "link" as const, href: "https://github.com/sil6428/learning-log" },
     ],
   }],
@@ -189,7 +194,38 @@ const learningLogFolders = Object.fromEntries([
   }]),
 ]) as Record<LearningLogFolderId, FolderContent>;
 
-const folders = { ...baseFolders, ...learningLogFolders } as Record<FolderId, FolderContent>;
+const tryHackMeMonths = Array.from(new Map(
+  tryHackMeEntries.map((entry) => [`${entry.year}-${entry.month}`, { year: entry.year, month: entry.month, monthLabel: entry.monthLabel }]),
+).values()).sort((a, b) => `${b.year}-${b.month}`.localeCompare(`${a.year}-${a.month}`));
+
+const tryHackMeFolders = Object.fromEntries([
+  ["tryhackme", {
+    title: "TryHackMe",
+    path: "/home/affan/TryHackMe",
+    items: tryHackMeMonths.map((month) => ({
+      id: `tryhackme-${month.year}-${month.month}`,
+      label: `${month.monthLabel} ${month.year}`,
+      meta: `${tryHackMeEntries.filter((entry) => entry.year === month.year && entry.month === month.month).length} completed rooms`,
+      icon: "folder" as const,
+      view: { kind: "folder" as const, id: `tryhackme-${month.year}-${month.month}` as TryHackMeFolderId },
+    })),
+  }],
+  ...tryHackMeMonths.map((month) => [`tryhackme-${month.year}-${month.month}`, {
+    title: `${month.monthLabel} ${month.year}`,
+    path: `/home/affan/TryHackMe/${month.year}/${month.monthLabel}`,
+    items: tryHackMeEntries
+      .filter((entry) => entry.year === month.year && entry.month === month.month)
+      .map((entry) => ({
+        id: entry.id,
+        label: `${entry.title}.room`,
+        meta: `${entry.itemType} · ${entry.level} · Completed ${entry.date}`,
+        icon: "text" as const,
+        view: { kind: "document" as const, id: entry.id as TryHackMeDocumentId },
+      })),
+  }]),
+]) as Record<TryHackMeFolderId, FolderContent>;
+
+const folders = { ...baseFolders, ...learningLogFolders, ...tryHackMeFolders } as Record<FolderId, FolderContent>;
 
 const baseDocuments: Record<StaticDocumentId, DocumentContent> = {
   about: {
@@ -414,7 +450,16 @@ const learningLogDocuments = Object.fromEntries(learningLogEntries.map((entry) =
   publishedAt: entry.date,
 }])) as Record<LearningLogDocumentId, DocumentContent>;
 
-const documents = { ...baseDocuments, ...learningLogDocuments } as Record<DocumentId, DocumentContent>;
+const tryHackMeDocuments = Object.fromEntries(tryHackMeEntries.map((entry) => [entry.id, {
+  title: entry.title,
+  type: `TryHackMe ${entry.itemType.toLowerCase()} · Completed · ${entry.level}`,
+  intro: entry.summary,
+  bullets: [...entry.takeaways],
+  publishedAt: entry.date,
+  links: [{ label: "Open the public room page", href: entry.sourceUrl }],
+}])) as Record<TryHackMeDocumentId, DocumentContent>;
+
+const documents = { ...baseDocuments, ...learningLogDocuments, ...tryHackMeDocuments } as Record<DocumentId, DocumentContent>;
 
 const desktopGroups: Array<{ id: string; label: string; items: OsItem[] }> = [
   {
@@ -445,6 +490,7 @@ const desktopGroups: Array<{ id: string; label: string; items: OsItem[] }> = [
     items: [
       { id: "terminal", label: "Terminal", meta: "AFFAN_OS shell", icon: "terminal", view: { kind: "document", id: "terminal" } },
       { id: "learning-log", label: "Learning Log", meta: `${learningLogEntries.length} public entries`, icon: "folder", view: { kind: "folder", id: "learning-log" } },
+      { id: "tryhackme", label: "TryHackMe", meta: `${tryHackMeEntries.length} completed rooms`, icon: "folder", view: { kind: "folder", id: "tryhackme" } },
     ],
   },
 ];
@@ -611,6 +657,7 @@ export default function DesktopOs({ onExit }: { onExit: () => void }) {
       education: "education", experience: "experience", interest: "interests", interests: "interests",
       contact: "contact", inspiration: "inspiration", references: "inspiration",
       log: "learning-log", logs: "learning-log", learning: "learning-log", "learning-log": "learning-log",
+      thm: "tryhackme", tryhackme: "tryhackme", training: "tryhackme",
     };
     const normalized = normalizeShellTarget(target.split("/").filter(Boolean).at(-1) ?? target);
     if (aliases[normalized]) return aliases[normalized] ?? null;
@@ -654,6 +701,9 @@ export default function DesktopOs({ onExit }: { onExit: () => void }) {
       contact: "contact",
       "learning-log": "learning-log",
       logs: "learning-log",
+      thm: "tryhackme",
+      tryhackme: "tryhackme",
+      training: "tryhackme",
     };
     const documentCommands: Partial<Record<string, DocumentId>> = {
       resume: "resume",
@@ -667,7 +717,7 @@ export default function DesktopOs({ onExit }: { onExit: () => void }) {
         "Room controls: lights, cat, relic, signal, print, room, shutdown",
         "Quote names containing spaces. Arrow keys recall history and Tab completes commands.",
       ],
-      ls: ["Folders: Projects  Network Labs  Education  Experience  Interests  Contact  Inspiration  Learning Log", "Files: About.txt  Skills.md  Resume.pdf"],
+      ls: ["Folders: Projects  Network Labs  Education  Experience  Interests  Contact  Inspiration  Learning Log  TryHackMe", "Files: About.txt  Skills.md  Resume.pdf"],
       whoami: ["Affan Shaikh", "Networking and IT Security student · Ontario Tech · Class of 2028"],
       status: ["AFFAN_OS online", "Current focus: portfolio systems, cybersecurity, networking, and a Proxmox home lab."],
       lights: ["Sending a colour override to the 3D room..."],
@@ -953,7 +1003,7 @@ export default function DesktopOs({ onExit }: { onExit: () => void }) {
               <div className="affan-os-file-layout">
                 <aside className="affan-os-places" aria-label="Places">
                   <strong>Places</strong>
-                  {(["home", "projects", "networking", "education", "experience", "interests", "learning-log", "contact"] as FolderId[]).map((folderId) => (
+                  {(["home", "projects", "networking", "education", "experience", "interests", "learning-log", "tryhackme", "contact"] as FolderId[]).map((folderId) => (
                     <button className={view.id === folderId ? "is-current" : ""} type="button" onClick={() => openView({ kind: "folder", id: folderId })} key={folderId}>{folders[folderId].title}</button>
                   ))}
                 </aside>

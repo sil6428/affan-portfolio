@@ -231,6 +231,9 @@ test("includes the device-local soundtrack and hidden terminal", async () => {
   const learningLog = await import("node:fs/promises").then(({ readFile }) =>
     readFile(new URL("../app/learning-log-data.generated.ts", import.meta.url), "utf8"),
   );
+  const tryHackMe = await import("node:fs/promises").then(({ readFile }) =>
+    readFile(new URL("../app/tryhackme-data.ts", import.meta.url), "utf8"),
+  );
   const assetCredits = await import("node:fs/promises").then(({ readFile }) =>
     readFile(new URL("../THIRD_PARTY_ASSETS.md", import.meta.url), "utf8"),
   );
@@ -592,12 +595,21 @@ test("includes the device-local soundtrack and hidden terminal", async () => {
   assert.match(desktopOs, /github\.com\/sil6428\/learning-log/);
   assert.match(desktopOs, /LearningLogMarkdown/);
   assert.match(desktopOs, /learning-log-\$\{month\.year\}-\$\{month\.month\}/);
+  assert.match(desktopOs, /TryHackMe/);
+  assert.match(desktopOs, /tryhackme-\$\{month\.year\}-\$\{month\.month\}/);
+  assert.match(desktopOs, /thm: "tryhackme"/);
   assert.doesNotMatch(desktopOs, /Learning Log\.private/);
   assert.doesNotMatch(desktopOs, /Private project record/);
+  assert.match(learningLog, /learning-log-entry-2026-09-04/);
+  assert.match(learningLog, /Refreshed offensive and defensive security fundamentals/);
   assert.match(learningLog, /learning-log-entry-2026-08-16/);
   assert.match(learningLog, /Started a cybersecurity research reproduction project/);
   assert.match(learningLog, /learning-log-entry-2026-07-27/);
   assert.match(learningLog, /Set up a genuine learning log/);
+  assert.match(tryHackMe, /tryhackme-room-offensive-security-intro/);
+  assert.match(tryHackMe, /tryhackme-room-defensive-security-intro/);
+  assert.match(tryHackMe, /Beginner refresher/);
+  assert.doesNotMatch(tryHackMe, /utm_|sharerId|flag\{|answer:/i);
   assert.match(desktopOs, /Networking · Configured IPv4 and IPv6/);
   assert.match(desktopOs, /Python · Built a SHA-256 file integrity monitor/);
   assert.match(desktopOs, /Three\.js · Built the interactive cyber lab/);

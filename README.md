@@ -8,7 +8,7 @@ An interactive Three.js portfolio for Affan Shaikh, a Networking and IT Security
 
 ## Experience
 
-The homepage is a full-screen cyber-lab diorama. Visitors inspect highlighted objects, move through eased camera transitions, and open the portfolio's content without leaving the room. The computer boots into AFFAN_OS, a simulated desktop with a file manager, terminal, resume viewer, project files, contact links, and month-organized learning logs.
+The homepage is a full-screen cyber-lab diorama. Visitors inspect highlighted objects, move through eased camera transitions, and open the portfolio's content without leaving the room. The computer boots into AFFAN_OS, a simulated desktop with a file manager, terminal, resume viewer, project files, contact links, month-organized learning logs, and a dedicated TryHackMe training folder.
 
 Normal HTML routes remain available for direct links and accessible reading:
 
@@ -28,7 +28,7 @@ Normal HTML routes remain available for direct links and accessible reading:
 - Licensed local CC0 camera model documented in [`THIRD_PARTY_ASSETS.md`](THIRD_PARTY_ASSETS.md)
 - Whole-object raycast highlighting, keyboard access, touch controls, reduced-motion support, and direct route fallbacks
 - Adaptive render tiers, bounded shadows, throttled reflections, idle frame limiting, and hidden-tab suspension
-- AFFAN_OS desktop with folders, windows, search, terminal commands, resume viewing, and synchronized learning logs
+- AFFAN_OS desktop with folders, windows, search, terminal commands, resume viewing, synchronized learning logs, and a month-organized TryHackMe training record
 - Deterministic three-minute chess-set print animation and small room Easter eggs
 - Production deployment on Cloudflare Workers
 - Automated rendered-route and public-content checks
