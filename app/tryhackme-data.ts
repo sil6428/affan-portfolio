@@ -14,6 +14,24 @@ export type TryHackMeEntry = {
 
 export const tryHackMeEntries = [
   {
+    id: "tryhackme-room-careers-in-cyber",
+    date: "2026-09-04",
+    year: "2026",
+    month: "09",
+    monthLabel: "September",
+    title: "Careers in Cyber",
+    itemType: "Room",
+    level: "Career orientation",
+    summary:
+      "Reviewed how cybersecurity work is divided across different roles and used that overview to place my networking, defensive-security, and systems interests more clearly.",
+    takeaways: [
+      "Cybersecurity is a collection of distinct roles rather than one universal job description.",
+      "A strong early-career profile needs depth in a few connected areas instead of claiming every security skill.",
+      "Networking, defensive security, systems work, and evidence-based projects remain the most credible direction for my current experience.",
+    ],
+    sourceUrl: "https://tryhackme.com/room/careersincybersn",
+  },
+  {
     id: "tryhackme-room-defensive-security-intro",
     date: "2026-09-04",
     year: "2026",

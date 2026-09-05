@@ -601,13 +601,14 @@ test("includes the device-local soundtrack and hidden terminal", async () => {
   assert.doesNotMatch(desktopOs, /Learning Log\.private/);
   assert.doesNotMatch(desktopOs, /Private project record/);
   assert.match(learningLog, /learning-log-entry-2026-09-04/);
-  assert.match(learningLog, /Refreshed offensive and defensive security fundamentals/);
+  assert.match(learningLog, /Refreshed cybersecurity fundamentals and career paths/);
   assert.match(learningLog, /learning-log-entry-2026-08-16/);
   assert.match(learningLog, /Started a cybersecurity research reproduction project/);
   assert.match(learningLog, /learning-log-entry-2026-07-27/);
   assert.match(learningLog, /Set up a genuine learning log/);
   assert.match(tryHackMe, /tryhackme-room-offensive-security-intro/);
   assert.match(tryHackMe, /tryhackme-room-defensive-security-intro/);
+  assert.match(tryHackMe, /tryhackme-room-careers-in-cyber/);
   assert.match(tryHackMe, /Beginner refresher/);
   assert.doesNotMatch(tryHackMe, /utm_|sharerId|flag\{|answer:/i);
   assert.match(desktopOs, /Networking · Configured IPv4 and IPv6/);
