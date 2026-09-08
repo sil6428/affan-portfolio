@@ -32,7 +32,22 @@ await cp(serverOutput, pagesServerOutput, {
 
 await writeFile(
   path.join(pagesOutput, "_worker.js"),
-  'export { default } from "./_server/index.js";\n',
+  `import app from "./_server/index.js";
+
+export default {
+  async fetch(request, env, context) {
+    if (request.method === "GET" || request.method === "HEAD") {
+      const assetResponse = await env.ASSETS.fetch(request);
+
+      if (assetResponse.status !== 404) {
+        return assetResponse;
+      }
+    }
+
+    return app.fetch(request, env, context);
+  },
+};
+`,
   "utf8",
 );
 
