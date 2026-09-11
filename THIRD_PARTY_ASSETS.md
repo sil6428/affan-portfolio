@@ -10,7 +10,7 @@ Poly Haven states that its assets are CC0, including commercial use, modificatio
 
 Licence: [Poly Haven licence and CC0 explanation](https://polyhaven.com/license)
 
-The source geometry is retained, but the portfolio replaces the camera's imported surface maps at runtime with smooth physically based materials and a limited dark-studio palette. The bookshelf and all other room objects are original procedural scene objects.
+The source geometry is retained, but the portfolio replaces the camera's imported surface maps at runtime with smooth physically based materials and a limited dark-studio palette. Because those original texture maps are never sampled, the shipped `Camera_01_1k.gltf` has been re-saved without its `images`/`textures`/`samplers` entries and the corresponding JPGs have been removed from `public/models/polyhaven/Camera_01/textures/` — geometry and UVs are untouched, only the now-dead ~1.6MB of texture payload was dropped. The bookshelf and all other room objects are original procedural scene objects.
 
 ## Research and visual references
 

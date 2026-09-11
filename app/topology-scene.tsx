@@ -152,7 +152,16 @@ export default function TopologyScene() {
 
     const clock = new THREE.Clock();
     let frame = 0;
+    let pageVisible = !document.hidden;
+    const handleVisibilityChange = () => {
+      pageVisible = !document.hidden;
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
     const render = () => {
+      if (!pageVisible) {
+        frame = window.requestAnimationFrame(render);
+        return;
+      }
       const elapsed = clock.getElapsedTime();
       group.rotation.x += (targetRotation.x - group.rotation.x) * 0.025;
       group.rotation.y += (targetRotation.y - group.rotation.y) * 0.025;
@@ -170,6 +179,7 @@ export default function TopologyScene() {
 
     return () => {
       window.cancelAnimationFrame(frame);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
       window.removeEventListener("pointermove", handlePointer);
       window.removeEventListener("scroll", handleScroll);
       resizeObserver.disconnect();

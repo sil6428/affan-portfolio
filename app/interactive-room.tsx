@@ -7,6 +7,10 @@ import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment
 import { RoundedBoxGeometry } from "three/examples/jsm/geometries/RoundedBoxGeometry.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { Reflector } from "three/examples/jsm/objects/Reflector.js";
+import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
+import { OutputPass } from "three/examples/jsm/postprocessing/OutputPass.js";
+import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
+import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
 import { mergeGeometries } from "three/examples/jsm/utils/BufferGeometryUtils.js";
 import DesktopOs from "./desktop-os";
 import { playSiteSfx } from "./site-sfx";
@@ -395,6 +399,22 @@ export default function InteractiveRoom() {
     renderer.domElement.setAttribute("aria-hidden", "true");
     renderer.domElement.dataset.renderQuality = highDetail ? "high" : "balanced";
     host.appendChild(renderer.domElement);
+
+    // Bloom lets the room's existing neon accent materials (rack LEDs, topology
+    // links, monitor glow, signal motes) actually glow instead of rendering as
+    // flat bright color. Reserved for the high-detail tier since it adds a full
+    // extra offscreen blur pass per frame.
+    let composer: EffectComposer | null = null;
+    let bloomPass: UnrealBloomPass | null = null;
+    let outputPass: OutputPass | null = null;
+    if (highDetail) {
+      composer = new EffectComposer(renderer);
+      composer.addPass(new RenderPass(scene, camera));
+      bloomPass = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.22, 0.22, 2.2);
+      composer.addPass(bloomPass);
+      outputPass = new OutputPass();
+      composer.addPass(outputPass);
+    }
 
     const pmremGenerator = new THREE.PMREMGenerator(renderer);
     const lightingEnvironment = new RoomEnvironment();
@@ -1312,18 +1332,30 @@ export default function InteractiveRoom() {
     });
     rackBadge.name = "server-rack-status-badge";
     if (highDetail) {
-      for (const x of [-0.72, 0.72]) {
-        for (let hole = 0; hole < 17; hole += 1) {
-          const railHole = new THREE.Mesh(
-            new THREE.CylinderGeometry(0.012, 0.012, 0.018, 8),
-            material("#11171b", { metalness: 0.35, roughness: 0.56 }),
+      const railHoleXs = [-0.72, 0.72];
+      const railHoleCount = 17;
+      const railHoles = new THREE.InstancedMesh(
+        new THREE.CylinderGeometry(0.012, 0.012, 0.018, 8),
+        material("#11171b", { metalness: 0.35, roughness: 0.56 }),
+        railHoleXs.length * railHoleCount,
+      );
+      railHoles.name = "server-rack-rail-hole";
+      const railHoleQuaternion = new THREE.Quaternion().setFromEuler(new THREE.Euler(Math.PI / 2, 0, 0));
+      const railHoleMatrix = new THREE.Matrix4();
+      let railHoleIndex = 0;
+      for (const x of railHoleXs) {
+        for (let hole = 0; hole < railHoleCount; hole += 1) {
+          railHoleMatrix.compose(
+            new THREE.Vector3(x, 0.38 + hole * 0.185, 0.802),
+            railHoleQuaternion,
+            new THREE.Vector3(1, 1, 1),
           );
-          railHole.name = "server-rack-rail-hole";
-          railHole.rotation.x = Math.PI / 2;
-          railHole.position.set(x, 0.38 + hole * 0.185, 0.802);
-          rack.add(railHole);
+          railHoles.setMatrixAt(railHoleIndex, railHoleMatrix);
+          railHoleIndex += 1;
         }
       }
+      railHoles.instanceMatrix.needsUpdate = true;
+      rack.add(railHoles);
     }
     const serverBeacon = easterHotspot("signal", "PRESS SERVER BEACON", rack);
     serverBeacon.position.set(0.69, 3.38, 0.81);
@@ -1354,7 +1386,18 @@ export default function InteractiveRoom() {
     box(printer, [0.14, 2.5, 0.14], [-0.9, 1.3, -0.68], "#202a31", { metalness: 0.62 });
     box(printer, [0.14, 2.5, 0.14], [0.9, 1.3, -0.68], "#202a31", { metalness: 0.62 });
     box(printer, [1.95, 0.14, 0.14], [0, 2.52, -0.68], "#202a31", { metalness: 0.62 });
-    for (const x of [-0.74, 0.74]) {
+    const leadScrewXs = [-0.74, 0.74];
+    const threadsPerScrew = 13;
+    const threadRings = new THREE.InstancedMesh(
+      new THREE.TorusGeometry(0.026, 0.004, 5, 10),
+      material("#c5cfd1", { metalness: 0.96, roughness: 0.18 }),
+      leadScrewXs.length * threadsPerScrew,
+    );
+    threadRings.name = "printer-lead-screw-thread";
+    const threadRingQuaternion = new THREE.Quaternion().setFromEuler(new THREE.Euler(Math.PI / 2, 0, 0));
+    const threadRingMatrix = new THREE.Matrix4();
+    let threadRingIndex = 0;
+    for (const x of leadScrewXs) {
       const leadScrew = new THREE.Mesh(
         new THREE.CylinderGeometry(0.022, 0.022, 2.32, 12),
         material("#9aa9ad", { metalness: 0.94, roughness: 0.2 }),
@@ -1362,17 +1405,18 @@ export default function InteractiveRoom() {
       leadScrew.name = "printer-z-lead-screw";
       leadScrew.position.set(x, 1.34, -0.63);
       printer.add(leadScrew);
-      for (let thread = 0; thread < 13; thread += 1) {
-        const threadRing = new THREE.Mesh(
-          new THREE.TorusGeometry(0.026, 0.004, 5, 10),
-          material("#c5cfd1", { metalness: 0.96, roughness: 0.18 }),
+      for (let thread = 0; thread < threadsPerScrew; thread += 1) {
+        threadRingMatrix.compose(
+          new THREE.Vector3(x, 0.28 + thread * 0.17, -0.63),
+          threadRingQuaternion,
+          new THREE.Vector3(1, 1, 1),
         );
-        threadRing.name = "printer-lead-screw-thread";
-        threadRing.rotation.x = Math.PI / 2;
-        threadRing.position.set(x, 0.28 + thread * 0.17, -0.63);
-        printer.add(threadRing);
+        threadRings.setMatrixAt(threadRingIndex, threadRingMatrix);
+        threadRingIndex += 1;
       }
     }
+    threadRings.instanceMatrix.needsUpdate = true;
+    printer.add(threadRings);
     const printBedAssembly = new THREE.Group();
     printBedAssembly.name = "printer-y-bed";
     printer.add(printBedAssembly);
@@ -1935,6 +1979,10 @@ export default function InteractiveRoom() {
       motorCap.position.set(x, 0.36, -0.5);
       printer.add(motorCap);
     }
+    const spoolRimGeometry = new THREE.CylinderGeometry(0.34, 0.34, 0.025, 30);
+    const spoolRimMaterial = material("#273239", { metalness: 0.52, roughness: 0.36 });
+    const spoolCoreGeometry = new THREE.CylinderGeometry(0.105, 0.105, 0.19, 20);
+    const spoolCoreMaterial = material("#56636a", { metalness: 0.58, roughness: 0.34 });
     const createPrinterSpool = (name: string, color: string, emissive: string, x: number) => {
       const spoolGroup = new THREE.Group();
       spoolGroup.name = name;
@@ -1954,20 +2002,14 @@ export default function InteractiveRoom() {
       filament.rotation.z = Math.PI / 2;
       spoolGroup.add(filament);
       for (const rimX of [-0.095, 0.095]) {
-        const rim = new THREE.Mesh(
-          new THREE.CylinderGeometry(0.34, 0.34, 0.025, 30),
-          material("#273239", { metalness: 0.52, roughness: 0.36 }),
-        );
+        const rim = new THREE.Mesh(spoolRimGeometry, spoolRimMaterial);
         rim.name = `${name}-rim`;
         rim.rotation.z = Math.PI / 2;
         rim.position.x = rimX;
         spoolGroup.add(rim);
       }
 
-      const core = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.105, 0.105, 0.19, 20),
-        material("#56636a", { metalness: 0.58, roughness: 0.34 }),
-      );
+      const core = new THREE.Mesh(spoolCoreGeometry, spoolCoreMaterial);
       core.name = `${name}-core`;
       core.rotation.z = Math.PI / 2;
       spoolGroup.add(core);
@@ -2302,28 +2344,44 @@ export default function InteractiveRoom() {
     );
     shutter.position.set(0.12, 0.5, -0.32);
     cameraGroup.add(shutter);
-    for (let dialIndex = 0; dialIndex < 2; dialIndex += 1) {
+    const dialCount = 2;
+    const notchesPerDial = 12;
+    const dialNotches = highDetail
+      ? new THREE.InstancedMesh(
+          new RoundedBoxGeometry(0.018, 0.035, 0.018, 3, 0.004),
+          material("#8b989d", { metalness: 0.8, roughness: 0.22 }),
+          dialCount * notchesPerDial,
+        )
+      : null;
+    if (dialNotches) {
+      dialNotches.name = "camera-dial-knurl";
+      dialNotches.castShadow = true;
+      dialNotches.receiveShadow = true;
+      cameraGroup.add(dialNotches);
+    }
+    const dialNotchMatrix = new THREE.Matrix4();
+    let dialNotchIndex = 0;
+    for (let dialIndex = 0; dialIndex < dialCount; dialIndex += 1) {
       const dial = new THREE.Mesh(
         new THREE.CylinderGeometry(0.11, 0.11, 0.07, 18),
         material("#303a40", { metalness: 0.78, roughness: 0.24 }),
       );
       dial.position.set(-0.12, 0.5, -0.15 + dialIndex * 0.42);
       cameraGroup.add(dial);
-      if (highDetail) {
-        for (let notch = 0; notch < 12; notch += 1) {
-          const angle = (notch / 12) * Math.PI * 2;
-          const dialNotch = roundedBox(
-            cameraGroup,
-            [0.018, 0.035, 0.018],
-            [-0.12 + Math.cos(angle) * 0.105, 0.5 + Math.sin(angle) * 0.105, -0.15 + dialIndex * 0.42],
-            "#8b989d",
-            0.004,
-            { metalness: 0.8, roughness: 0.22 },
+      if (dialNotches) {
+        for (let notch = 0; notch < notchesPerDial; notch += 1) {
+          const angle = (notch / notchesPerDial) * Math.PI * 2;
+          dialNotchMatrix.compose(
+            new THREE.Vector3(-0.12 + Math.cos(angle) * 0.105, 0.5 + Math.sin(angle) * 0.105, -0.15 + dialIndex * 0.42),
+            new THREE.Quaternion(),
+            new THREE.Vector3(1, 1, 1),
           );
-          dialNotch.name = "camera-dial-knurl";
+          dialNotches.setMatrixAt(dialNotchIndex, dialNotchMatrix);
+          dialNotchIndex += 1;
         }
       }
     }
+    if (dialNotches) dialNotches.instanceMatrix.needsUpdate = true;
     const hotShoe = roundedBox(cameraGroup, [0.16, 0.025, 0.18], [-0.02, 0.555, 0.1], "#889397", 0.008, {
       metalness: 0.9,
       roughness: 0.2,
@@ -2472,16 +2530,21 @@ export default function InteractiveRoom() {
     racketEndCap.name = "racket-end-cap";
     racketEndCap.position.y = -2.04;
     racket.add(racketEndCap);
-    for (let grommet = 0; grommet < 18; grommet += 1) {
-      const angle = (grommet / 18) * Math.PI * 2;
-      const grommetMesh = new THREE.Mesh(
-        new THREE.SphereGeometry(0.013, 7, 5),
-        material("#1b2226", { metalness: 0.45, roughness: 0.42 }),
-      );
-      grommetMesh.name = "racket-string-grommet";
-      grommetMesh.position.set(Math.cos(angle) * 0.58, Math.sin(angle) * 0.58 * 1.28, 0);
-      racket.add(grommetMesh);
+    const grommetCount = 18;
+    const grommets = new THREE.InstancedMesh(
+      new THREE.SphereGeometry(0.013, 7, 5),
+      material("#1b2226", { metalness: 0.45, roughness: 0.42 }),
+      grommetCount,
+    );
+    grommets.name = "racket-string-grommet";
+    const grommetMatrix = new THREE.Matrix4();
+    for (let grommet = 0; grommet < grommetCount; grommet += 1) {
+      const angle = (grommet / grommetCount) * Math.PI * 2;
+      grommetMatrix.setPosition(Math.cos(angle) * 0.58, Math.sin(angle) * 0.58 * 1.28, 0);
+      grommets.setMatrixAt(grommet, grommetMatrix);
     }
+    grommets.instanceMatrix.needsUpdate = true;
+    racket.add(grommets);
 
     const cat = new THREE.Group();
     cat.position.set(-0.2, 0.24, 0.95);
@@ -3275,6 +3338,7 @@ export default function InteractiveRoom() {
       camera.aspect = width / Math.max(height, 1);
       camera.updateProjectionMatrix();
       renderer.setSize(width, height, false);
+      composer?.setSize(width, height);
       if (!cameraMove && focusedKey === null && document.body.classList.contains("room-default-view")) {
         camera.position.copy(overviewPosition);
         controls.target.copy(overviewTarget);
@@ -3495,7 +3559,8 @@ export default function InteractiveRoom() {
           : skipReflectorRender;
         if (shouldRefreshReflection) lastReflectionUpdate = timestamp;
       }
-      renderer.render(scene, camera);
+      if (composer) composer.render();
+      else renderer.render(scene, camera);
       if (liveReflector && reflectorOnBeforeRender) {
         liveReflector.onBeforeRender = reflectorOnBeforeRender;
       }
@@ -3552,6 +3617,9 @@ export default function InteractiveRoom() {
       if (Array.isArray(reflectiveBoundaryTintMaterial)) reflectiveBoundaryTintMaterial.forEach((surface) => surface.dispose());
       else reflectiveBoundaryTintMaterial.dispose();
       environmentRenderTarget.dispose();
+      bloomPass?.dispose();
+      outputPass?.dispose();
+      composer?.dispose();
       renderer.dispose();
       renderer.domElement.remove();
     };
