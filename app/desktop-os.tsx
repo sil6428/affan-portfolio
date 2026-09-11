@@ -13,6 +13,7 @@ type StaticDocumentId =
   | "archtech"
   | "ssik"
   | "portfolio"
+  | "cloud-iam-auditor"
   | "secure-file-transfer"
   | "secure-messaging"
   | "file-integrity-monitor"
@@ -65,7 +66,7 @@ const baseFolders: Record<StaticFolderId, FolderContent> = {
     title: "Home",
     path: "/home/affan",
     items: [
-      { id: "projects", label: "Projects", meta: "7 items", icon: "folder", view: { kind: "folder", id: "projects" } },
+      { id: "projects", label: "Projects", meta: "8 items", icon: "folder", view: { kind: "folder", id: "projects" } },
       { id: "networking", label: "Network Labs", meta: "2 files", icon: "folder", view: { kind: "folder", id: "networking" } },
       { id: "education", label: "Education", meta: "2 files", icon: "folder", view: { kind: "folder", id: "education" } },
       { id: "experience", label: "Experience", meta: "2 files · 4 roles", icon: "folder", view: { kind: "folder", id: "experience" } },
@@ -87,8 +88,9 @@ const baseFolders: Record<StaticFolderId, FolderContent> = {
       { id: "ssik", label: "SSIK Consulting.project", meta: "Private platform + website", icon: "code", view: { kind: "document", id: "ssik" } },
       { id: "archtech", label: "Archtech Operations.project", meta: "Nonprofit technology", icon: "code", view: { kind: "document", id: "archtech" } },
       { id: "portfolio", label: "Portfolio.repo", meta: "Three.js + React", icon: "code", view: { kind: "document", id: "portfolio" } },
+      { id: "cloud-iam", label: "Cloud IAM Policy Auditor.py", meta: "AWS IAM + policy review", icon: "code", view: { kind: "document", id: "cloud-iam-auditor" } },
       { id: "secure-transfer", label: "Secure File Transfer.py", meta: "TLS + verified transfer", icon: "code", view: { kind: "document", id: "secure-file-transfer" } },
-      { id: "secure-messaging", label: "Secure Messaging Platform.wip", meta: "Private · work in progress", icon: "code", view: { kind: "document", id: "secure-messaging" } },
+      { id: "secure-messaging", label: "P2P Messaging.wip", meta: "Private collaborative WIP", icon: "code", view: { kind: "document", id: "secure-messaging" } },
       { id: "integrity", label: "File Integrity Monitor.py", meta: "Python + SHA-256", icon: "code", view: { kind: "document", id: "file-integrity-monitor" } },
       { id: "events", label: "Event Planner.js", meta: "JavaScript", icon: "code", view: { kind: "document", id: "event-planner" } },
     ],
@@ -271,6 +273,19 @@ const baseDocuments: Record<StaticDocumentId, DocumentContent> = {
     bullets: ["Three.js room and custom models", "Canvas-rendered monitor states", "Keyboard and touch support", "Automated route and content checks"],
     links: [{ label: "View repository", href: "https://github.com/sil6428/affan-portfolio" }],
   },
+  "cloud-iam-auditor": {
+    title: "Cloud IAM Policy Auditor.py",
+    type: "Cloud security project · Python + AWS IAM JSON",
+    intro: "A public, offline command-line tool that reviews exported AWS IAM identity and role trust policies for common least-privilege and federation mistakes without requiring cloud credentials.",
+    bullets: [
+      "Implements 15 deterministic checks for full-admin grants, wildcard permissions, unrestricted iam:PassRole, public principals, cross-account trust, and GitHub Actions OIDC boundaries",
+      "Produces readable text, structured JSON, and SARIF reports with rule IDs, severities, locations, explanations, and remediations",
+      "Recursively handles policy directories in a stable order and rejects invalid or oversized inputs with a 1 MiB per-file bound",
+      "Passed 35 automated tests plus Ruff, Bandit, and dependency-audit checks across the implementation workflow",
+      "Runs locally and does not call AWS or replace effective-permission analysis with IAM Access Analyzer",
+    ],
+    links: [{ label: "View public repository", href: "https://github.com/sil6428/cloud-iam-policy-auditor" }],
+  },
   "secure-file-transfer": {
     title: "Secure File Transfer.py",
     type: "Private security project · Python + TLS",
@@ -280,19 +295,20 @@ const baseDocuments: Record<StaticDocumentId, DocumentContent> = {
       "Resumes uploads and downloads from verified byte offsets and restricts files to recipient-scoped storage",
       "Re-hashes stored files before download, verifies the receiver's final SHA-256 digest, and quarantines mismatches",
       "Verified 8 upload/download round trips totaling 13,632,512 bytes and resumed a 2,097,152-byte upload after a 700,000-byte interruption",
-      "Passed 13 automated tests covering authentication, isolation, traversal attempts, interruption, and tampering",
+      "Passed 14 automated tests covering authentication, throttling, isolation, traversal attempts, interruption, tampering, quarantine, and password-safe audit logging",
     ],
   },
   "secure-messaging": {
-    title: "Secure Messaging Platform.wip",
-    type: "Private work in progress · FastAPI + SQLite",
-    intro: "An explicitly unfinished messaging platform that will combine authenticated conversations with verified attachments. It is shown here as a development record, not as a completed secure product.",
+    title: "P2P Messaging.wip",
+    type: "Private collaborative work in progress · Python cryptography + TCP",
+    intro: "An educational direct-messaging prototype for two explicitly trusted peers. It now demonstrates encrypted and signed local/LAN delivery, while remaining clearly marked as unaudited work in progress rather than a production messenger.",
     bullets: [
-      "Current milestone: application shell, versioned schema, threat model, and roadmap",
-      "Schema establishes users, sessions, conversations, membership, messages, attachments, and audit events",
-      "Passed 4 foundation tests for status reporting, schema creation, idempotent initialization, and foreign-key enforcement",
-      "Planned sequence: accounts and sessions, direct messages, real-time delivery, verified attachments, integrity warnings, then hardening",
-      "Private source and unfinished features are intentionally not linked from this public portfolio",
+      "Protects Ed25519 signing and X25519 exchange identities with a password and shares self-signed peer cards with human-checkable fingerprints",
+      "Encrypts messages with ChaCha20-Poly1305, signs envelopes with Ed25519, and returns authenticated encrypted delivery acknowledgements",
+      "Enforces 64 KiB frame and 4 KiB plaintext limits, recipient validation, message expiry, known-peer verification, and persistent replay rejection",
+      "Passed 22 tests covering the CLI, identity storage, tampering, expiry, wrong recipients, unknown peers, oversized frames, replay attempts, acknowledgements, and end-to-end local delivery",
+      "Does not yet claim forward secrecy, NAT traversal, key rotation, multi-device support, encrypted history, attachment integration, or independent security review",
+      "Private shared source is intentionally not linked from this public portfolio",
     ],
   },
   "file-integrity-monitor": {
@@ -321,7 +337,9 @@ const baseDocuments: Record<StaticDocumentId, DocumentContent> = {
       "Networking · Configured IPv4 and IPv6 addressing, subnetting, VLANs, access ports, 802.1Q trunks, DHCP, DNS, NAT, STP, and inter-VLAN routing in Cisco IOS and Packet Tracer labs",
       "Troubleshooting · Used ping, traceroute, show commands, Wireshark, packet captures, routing tables, and interface state to isolate connectivity and configuration problems",
       "Cybersecurity · Applied authentication, authorization, role-based access control, encryption, hashing, and vulnerability analysis through security coursework and personal projects",
-      "Secure transfer · Built authenticated TLS transfers with certificate and hostname verification, resumable byte offsets, recipient isolation, SHA-256 re-hashing, mismatch quarantine, and 13 automated tests",
+      "Cloud IAM review · Built 15 offline checks for risky AWS identity and trust policies with text, JSON, and SARIF evidence backed by 35 automated tests",
+      "Secure messaging · Built signed peer cards, encrypted and signed direct messages, authenticated acknowledgements, bounded frames, and persistent replay rejection in a 22-test collaborative prototype",
+      "Secure transfer · Built authenticated TLS transfers with certificate and hostname verification, resumable byte offsets, recipient isolation, SHA-256 re-hashing, mismatch quarantine, and 14 automated tests",
       "Python · Built a SHA-256 file integrity monitor with deterministic baselines, JSON reports, four change categories, script-friendly exit codes, and 7 automated tests",
       "JavaScript and DOM · Built an event-planning tool that adds, edits, displays, and removes events while keeping the page state synchronized",
       "TypeScript and React · Built AFFAN_OS, the portfolio interface, reusable components, window state, keyboard interactions, and accessible controls",
@@ -433,7 +451,7 @@ const baseDocuments: Record<StaticDocumentId, DocumentContent> = {
   resume: {
     title: "Resume.pdf",
     type: "PDF document",
-    intro: "Affan Shaikh's one-page cybersecurity resume, led by reproducible intrusion-detection research, networking labs, and applied technical skills.",
+    intro: "Affan Shaikh's one-page cybersecurity resume, led by cloud IAM review, encrypted peer-to-peer messaging, secure file transfer, networking labs, and applied technical skills.",
   },
   terminal: {
     title: "Terminal",
@@ -726,7 +744,7 @@ export default function DesktopOs({ onExit }: { onExit: () => void }) {
       ],
       ls: ["Folders: Projects  Network Labs  Education  Experience  Interests  Contact  Inspiration  Learning Log  TryHackMe", "Files: About.txt  Skills.md  Resume.pdf"],
       whoami: ["Affan Shaikh", "Networking and IT Security student · Ontario Tech · Class of 2028"],
-      status: ["AFFAN_OS online", "Current focus: portfolio systems, cybersecurity, networking, and a Proxmox home lab."],
+      status: ["AFFAN_OS online", "Current focus: cloud IAM review, secure communications, networking, and a Proxmox home lab."],
       lights: ["Sending a colour override to the 3D room..."],
       cat: ["Sending three approved pets to the room cat..."],
       relic: ["Charging the printed katana on the bottom shelf..."],
@@ -1047,10 +1065,10 @@ export default function DesktopOs({ onExit }: { onExit: () => void }) {
             <div className="affan-os-resume-viewer">
               <nav aria-label="Resume controls">
                 <div><strong>Affan_Shaikh_Resume.pdf</strong><span>1 page</span></div>
-                <a href="/Affan_Shaikh_Resume.pdf?v=2026-09-01-secure-transfer" target="_blank" rel="noreferrer">Open full size <ExternalMark /></a>
-                <a href="/Affan_Shaikh_Resume.pdf?v=2026-09-01-secure-transfer" download>Download PDF</a>
+                <a href="/Affan_Shaikh_Resume.pdf?v=2026-09-11-cloud-iam" target="_blank" rel="noreferrer">Open full size <ExternalMark /></a>
+                <a href="/Affan_Shaikh_Resume.pdf?v=2026-09-11-cloud-iam" download>Download PDF</a>
               </nav>
-              <iframe src="/Affan_Shaikh_Resume.pdf?v=2026-09-01-secure-transfer#view=FitH&toolbar=0" title="Affan Shaikh resume PDF" />
+              <iframe src="/Affan_Shaikh_Resume.pdf?v=2026-09-11-cloud-iam#view=FitH&toolbar=0" title="Affan Shaikh resume PDF" />
             </div>
           )}
 
