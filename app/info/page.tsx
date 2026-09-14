@@ -138,7 +138,7 @@ export default function Info() {
           <a href="mailto:ffaanshake@gmail.com">Email <Arrow /></a>
           <a href="https://www.linkedin.com/in/sil6428" target="_blank" rel="noreferrer">LinkedIn <Arrow /></a>
           <a href="https://github.com/sil6428" target="_blank" rel="noreferrer">GitHub <Arrow /></a>
-          <a href="/Affan_Shaikh_Resume.pdf?v=2026-09-11-cloud-iam" target="_blank">Resume <Arrow /></a>
+          <a href="/Affan_Shaikh_Resume.pdf?v=2026-09-14-canonical" target="_blank">Resume <Arrow /></a>
         </div>
       </section>
 

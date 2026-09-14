@@ -564,9 +564,6 @@ test("includes the device-local soundtrack and hidden terminal", async () => {
   assert.match(desktopOs, /github\.com\/sil6428\/file-integrity-monitor/);
   assert.match(desktopOs, /Secure File Transfer\.py/);
   assert.match(desktopOs, /14 automated tests/);
-  assert.match(desktopOs, /Cloud IAM Policy Auditor\.py/);
-  assert.match(desktopOs, /15 deterministic checks/);
-  assert.match(desktopOs, /github\.com\/sil6428\/cloud-iam-policy-auditor/);
   assert.match(desktopOs, /P2P Messaging\.wip/);
   assert.match(desktopOs, /Private collaborative WIP/);
   assert.match(desktopOs, /22 tests/);
@@ -576,7 +573,7 @@ test("includes the device-local soundtrack and hidden terminal", async () => {
   assert.doesNotMatch(desktopOs, /github\.com\/sil6428\/secure-messaging-platform/);
   assert.match(desktopOs, /Event Planner\.js/);
   assert.match(desktopOs, /Resume\.pdf/);
-  assert.match(desktopOs, /Affan_Shaikh_Resume\.pdf\?v=2026-09-11-cloud-iam#view=FitH/);
+  assert.match(desktopOs, /Affan_Shaikh_Resume\.pdf\?v=2026-09-14-canonical#view=FitH/);
   assert.match(desktopOs, /Affan Shaikh resume PDF/);
   assert.match(desktopOs, /Ontario Tech\.txt/);
   assert.match(desktopOs, /Security\+\.plan/);
