@@ -1,4 +1,4 @@
-const DESTINATION = 'https://affan-portfolio-a1n.pages.dev';
+const DESTINATION = 'https://affan-shaikh.pages.dev';
 
 export default {
   fetch(request: Request): Response {

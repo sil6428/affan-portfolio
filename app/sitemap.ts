@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const baseUrl = "https://affan-shaikh-portfolio.sil6428-archtech.workers.dev";
+const baseUrl = "https://affan-shaikh.pages.dev";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

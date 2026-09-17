@@ -4,7 +4,7 @@ import SiteExtras from "./site-extras";
 import TopologyScene from "./topology-scene";
 import "./globals.css";
 
-const publicUrl = "https://affan-shaikh-portfolio.sil6428-archtech.workers.dev";
+const publicUrl = "https://affan-shaikh.pages.dev";
 
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();

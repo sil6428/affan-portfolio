@@ -2,7 +2,7 @@
 
 An interactive Three.js portfolio for Affan Shaikh, a Networking and IT Security student at Ontario Tech University.
 
-[Open the live portfolio](https://affan-shaikh-portfolio.sil6428-archtech.workers.dev)
+[Open the live portfolio](https://affan-shaikh.pages.dev)
 
 ![Interactive cyber-lab preview](public/og-lab-v2.png)
 

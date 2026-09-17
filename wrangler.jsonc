@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "affan-portfolio",
+  "name": "affan-shaikh",
   "pages_build_output_dir": "./dist/pages",
   "compatibility_date": "2026-09-07",
   "compatibility_flags": ["nodejs_compat"]
