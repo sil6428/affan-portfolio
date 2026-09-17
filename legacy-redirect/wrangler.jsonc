@@ -1,0 +1,7 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "affan-shaikh-portfolio",
+  "main": "./index.ts",
+  "compatibility_date": "2026-09-17",
+  "workers_dev": true
+}
