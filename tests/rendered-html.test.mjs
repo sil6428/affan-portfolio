@@ -565,15 +565,16 @@ test("includes the device-local soundtrack and hidden terminal", async () => {
   assert.match(desktopOs, /Secure File Transfer\.py/);
   assert.match(desktopOs, /14 automated tests/);
   assert.match(desktopOs, /P2P Messaging\.wip/);
-  assert.match(desktopOs, /Private collaborative WIP/);
-  assert.match(desktopOs, /22 tests/);
+  assert.match(desktopOs, /Public collaborative WIP/);
+  assert.match(desktopOs, /72 automated tests/);
+  assert.match(desktopOs, /github\.com\/sil6428\/P2P-messaging/);
   assert.match(desktopOs, /unaudited work in progress/);
   assert.doesNotMatch(desktopOs, /CICIDS2017\.research/);
   assert.doesNotMatch(desktopOs, /github\.com\/sil6428\/secure-file-transfer/);
   assert.doesNotMatch(desktopOs, /github\.com\/sil6428\/secure-messaging-platform/);
   assert.match(desktopOs, /Event Planner\.js/);
   assert.match(desktopOs, /Resume\.pdf/);
-  assert.match(desktopOs, /Affan_Shaikh_Resume\.pdf\?v=2026-09-14-canonical#view=FitH/);
+  assert.match(desktopOs, /Affan_Shaikh_Resume\.pdf\?v=2026-09-17-p2p#view=FitH/);
   assert.match(desktopOs, /Affan Shaikh resume PDF/);
   assert.match(desktopOs, /Ontario Tech\.txt/);
   assert.match(desktopOs, /Security\+\.plan/);
@@ -605,6 +606,8 @@ test("includes the device-local soundtrack and hidden terminal", async () => {
   assert.match(learningLog, /Refreshed cybersecurity fundamentals and career paths/);
   assert.match(learningLog, /learning-log-entry-2026-09-05/);
   assert.match(learningLog, /Built a foundation for junior SOC analysis/);
+  assert.match(learningLog, /learning-log-entry-2026-09-17/);
+  assert.match(learningLog, /Reviewed and hardened the collaborative P2P messaging update/);
   assert.match(learningLog, /learning-log-entry-2026-08-16/);
   assert.match(learningLog, /Started a cybersecurity research reproduction project/);
   assert.match(learningLog, /learning-log-entry-2026-07-27/);
