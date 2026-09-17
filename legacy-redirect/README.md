@@ -12,3 +12,10 @@ Deploy from the repository root with:
 ```bash
 npx wrangler deploy --config legacy-redirect/wrangler.jsonc
 ```
+
+The former `affan-portfolio-a1n.pages.dev` Pages project uses the same destination.
+Deploy its redirect artifact with:
+
+```bash
+npx wrangler pages deploy legacy-redirect/pages --project-name affan-portfolio --branch main
+```
