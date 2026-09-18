@@ -18,7 +18,7 @@ const data = {
     ["Co-founder", "Ghayas Sher, Ontario Tech classmate"],
     ["Website", "Nine public pages"],
     ["Internal platform", "12-stage local V1"],
-    ["Verification", "79 automated tests"],
+    ["Verification", "110 passing tests"],
     ["Hosting", "GitHub Pages"],
   ] as Array<[string, string]>,
   links: [
@@ -52,7 +52,7 @@ const data = {
       title: "Private internal intelligence platform",
       paragraphs: [
         "I built SSIK Intelligence as a private, local-first Python and FastAPI system for authorized prospect research. Its workflow keeps collection passive, preserves source evidence, separates analyst and administrator permissions, and requires human review before any outreach draft advances.",
-        "The completed V1 includes durable background jobs, SSRF and DNS-rebinding defenses, deterministic findings and scores, evidence review, exports, rescans and change comparisons, bounded overnight runs, integrity-checked backups, storage controls, and mock-only message delivery. The release passed 79 automated tests plus linting, strict type checks, migration checks, database integrity checks, and a secret scan.",
+        "The platform includes durable background jobs, SSRF and DNS-rebinding defenses, deterministic findings and scores, evidence review, exports, rescans and change comparisons, bounded overnight runs, integrity-checked backups, storage controls, and mock-only message delivery. The current suite passes 110 tests, with linting, strict type checks, migration checks, database integrity checks, and secret scanning also part of release verification.",
       ],
       bullets: [
         "Delivered the full 12-stage V1 specification",
