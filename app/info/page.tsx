@@ -12,13 +12,13 @@ const timeline = [
     role: "Bachelor of Information Technology",
     place: "Ontario Tech University",
     date: "09/2024 — Present",
-    detail: "Bachelor of Information Technology (Honours) in Networking and IT Security, graduating in 2028. Studying network architecture, systems, programming, and security fundamentals.",
+    detail: "Bachelor of Information Technology (Honours) in Networking and IT Security, with graduation expected in April 2028. Studying network architecture, systems, programming, and security fundamentals.",
   },
   {
     role: "Co-Founder and Website Developer",
     place: "SSIK IT Consulting & Solutions · Ontario",
     date: "05/2026 — Present",
-    detail: "Co-founded SSIK with Ontario Tech classmate Ghayas Sher. We share consulting, security assessment, privacy research, and stakeholder responsibilities. I independently built the public website and a private, local-first internal research platform verified by 79 automated tests.",
+    detail: "Co-founded SSIK with Ontario Tech classmate Ghayas Sher. We share consulting, security assessment, privacy research, and stakeholder responsibilities. I independently built the public website and a private, local-first internal research platform verified by 110 passing tests.",
   },
   {
     role: "Technical Operations and Hosting",
@@ -67,13 +67,13 @@ export default function Info() {
           <div className="profile-facts" aria-label="Profile details">
             <div><span>Location</span><strong>Oshawa, Ontario</strong></div>
             <div><span>Education</span><strong>Ontario Tech University</strong></div>
-            <div><span>Graduation</span><strong>2028</strong></div>
+            <div><span>Graduation</span><strong>Expected April 2028</strong></div>
             <div><span>Current focus</span><strong>Networks and cybersecurity</strong></div>
           </div>
           <div className="story">
             <h2>A little context</h2>
             <p>
-              I&apos;m a student studying cybersecurity at Ontario Tech University, graduating in 2028. My work moves between
+              I&apos;m a student studying cybersecurity at Ontario Tech University, with graduation expected in April 2028. My work moves between
               configuring networks, understanding security controls, and building software that solves clear problems.
             </p>
             <p>

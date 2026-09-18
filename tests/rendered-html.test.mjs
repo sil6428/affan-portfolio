@@ -77,9 +77,29 @@ test("renders SSIK's shared co-founder responsibilities and Affan's additional w
   assert.match(html, /share SSIK's co-founder, consulting, security-assessment, privacy-research, and stakeholder-communication responsibilities/i);
   assert.match(html, /In addition to that shared work/i);
   assert.match(html, /12-stage local V1/i);
-  assert.match(html, /79 automated tests/i);
+  assert.match(html, /110 passing tests/i);
   assert.match(html, /outbound delivery disabled/i);
   assert.match(html, /sil6428\.github\.io\/SSIK-website/);
+});
+
+test("renders the public secure-communications case studies", async () => {
+  const p2pResponse = await render("/work/p2p-messaging");
+  assert.equal(p2pResponse.status, 200);
+  const p2p = await p2pResponse.text();
+  assert.match(p2p, /P2P Messaging/);
+  assert.match(p2p, /Ghayas Sher/);
+  assert.match(p2p, /72 automated tests/);
+  assert.match(p2p, /forward secrecy/);
+  assert.match(p2p, /github\.com\/sil6428\/P2P-messaging/);
+
+  const transferResponse = await render("/work/secure-file-transfer");
+  assert.equal(transferResponse.status, 200);
+  const transfer = await transferResponse.text();
+  assert.match(transfer, /Secure File Transfer/);
+  assert.match(transfer, /Private source/);
+  assert.match(transfer, /13,632,512 bytes/);
+  assert.match(transfer, /14 automated tests/);
+  assert.doesNotMatch(transfer, /github\.com\/sil6428\/secure-file-transfer/);
 });
 
 test("publishes crawler and structured profile metadata", async () => {
@@ -97,6 +117,8 @@ test("publishes crawler and structured profile metadata", async () => {
   const sitemap = await sitemapResponse.text();
   assert.match(sitemap, /work\/archtech/);
   assert.match(sitemap, /work\/ssik/);
+  assert.match(sitemap, /work\/p2p-messaging/);
+  assert.match(sitemap, /work\/secure-file-transfer/);
 
   const robotsResponse = await render("/robots.txt");
   assert.equal(robotsResponse.status, 200);
@@ -563,7 +585,7 @@ test("includes the device-local soundtrack and hidden terminal", async () => {
   assert.match(desktopOs, /SSIK Consulting\.project/);
   assert.match(desktopOs, /Ghayas Sher/);
   assert.match(desktopOs, /private, local-first SSIK Intelligence V1 platform/);
-  assert.match(desktopOs, /79 automated tests/);
+  assert.match(desktopOs, /110 passing tests/);
   assert.match(desktopOs, /sil6428\.github\.io\/SSIK-website/);
   assert.match(desktopOs, /File Integrity Monitor\.py/);
   assert.match(desktopOs, /github\.com\/sil6428\/file-integrity-monitor/);
@@ -613,6 +635,8 @@ test("includes the device-local soundtrack and hidden terminal", async () => {
   assert.match(learningLog, /Built a foundation for junior SOC analysis/);
   assert.match(learningLog, /learning-log-entry-2026-09-17/);
   assert.match(learningLog, /Reviewed and hardened the collaborative P2P messaging update/);
+  assert.match(learningLog, /learning-log-entry-2026-09-18/);
+  assert.match(learningLog, /Aligned conference-facing portfolio, resume, and repositories/);
   assert.match(learningLog, /learning-log-entry-2026-08-16/);
   assert.match(learningLog, /Started a cybersecurity research reproduction project/);
   assert.match(learningLog, /learning-log-entry-2026-07-27/);
@@ -629,7 +653,7 @@ test("includes the device-local soundtrack and hidden terminal", async () => {
   assert.match(desktopOs, /Networking · Configured IPv4 and IPv6/);
   assert.match(desktopOs, /Python · Built a SHA-256 file integrity monitor/);
   assert.match(desktopOs, /Three\.js · Built the interactive cyber lab/);
-  assert.match(desktopOs, /Cloudflare Workers · Built and repeatedly deployed/);
+  assert.match(desktopOs, /Cloudflare Pages · Built and repeatedly deployed/);
   assert.match(desktopOs, /Google Workspace and web operations · Set up a nonprofit/);
   assert.match(desktopOs, /Minimize/);
   assert.match(desktopOs, /Maximize/);

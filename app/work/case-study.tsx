@@ -46,7 +46,7 @@ export default function CaseStudy({ data }: { data: CaseStudyData }) {
 
       <article className="case-study wrap">
         <div className="case-breadcrumb">
-          {/* A full navigation intentionally resets the scroll position in the deployed worker. */}
+          {/* A full navigation intentionally resets the scroll position in the deployed site. */}
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a href="/#work">Selected work</a>
           <span>/</span>
@@ -68,7 +68,7 @@ export default function CaseStudy({ data }: { data: CaseStudyData }) {
 
         {data.image && data.imageAlt && (
           <figure className="case-cover">
-            {/* Static project captures are served directly because the Worker does not use an image-optimization service. */}
+            {/* Static project captures are served directly because this deployment does not use an image-optimization service. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={data.image}

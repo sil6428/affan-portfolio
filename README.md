@@ -16,6 +16,8 @@ Normal HTML routes remain available for direct links and accessible reading:
 - `/interests`
 - `/work/archtech`
 - `/work/ssik`
+- `/work/p2p-messaging`
+- `/work/secure-file-transfer`
 - `/interests/badminton`
 - `/interests/3d-printing`
 - `/interests/reading`
@@ -65,10 +67,10 @@ npm test
 ## Content notes
 
 - Archtech work covers Google Workspace, website-team coordination, hosting, and deployment for a developing nonprofit. Its source and internal work remain private.
-- SSIK IT Consulting & Solutions was co-founded with Ghayas Sher. We share service planning, security-control research, privacy research, and stakeholder communication. I independently built and maintain its public website and completed a private, local-first internal intelligence platform with passive collection, evidence review, role-based access, bounded automation, recovery controls, and 79 automated tests. The private source is intentionally not linked.
+- SSIK IT Consulting & Solutions was co-founded with Ghayas Sher. We share service planning, security-control research, privacy research, and stakeholder communication. I independently built and maintain its public website and a private, local-first internal intelligence platform with passive collection, evidence review, role-based access, bounded automation, recovery controls, and 110 passing tests. The private source is intentionally not linked.
 - Secure File Transfer is a completed private Python project covering authenticated TLS, certificate and hostname verification, recipient isolation, resumable transfers, SHA-256 verification, tamper quarantine, and 14 automated tests. Its source is intentionally not linked.
 - P2P Messaging is a public collaborative work in progress. The portfolio documents its verified contacts, encrypted and signed direct messages, encrypted local history, signed attachment references, transport safeguards, 72-test evidence, and major missing production guarantees without presenting it as audited software.
-- The public portfolio and public resume do not expose a phone number. Application-specific resume copies retain it.
+- The portfolio pages do not display a phone number outside the downloadable conference resume, which includes direct contact details for recruiters and attendees.
 
 ## References and assets
 

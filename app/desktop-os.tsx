@@ -231,7 +231,7 @@ const baseDocuments: Record<StaticDocumentId, DocumentContent> = {
   about: {
     title: "About.txt",
     type: "Plain text",
-    intro: "I am a Networking and IT Security student at Ontario Tech University, graduating in 2028. I like building systems I can take apart, understand, and improve.",
+    intro: "I am a Networking and IT Security student at Ontario Tech University, with graduation expected in April 2028. I like building systems I can take apart, understand, and improve.",
     bullets: ["Networking and IT security", "Co-founder of SSIK IT Consulting & Solutions", "Nonprofit technology operations", "3D printing, badminton, photography, and home-lab projects"],
   },
   archtech: {
@@ -255,7 +255,7 @@ const baseDocuments: Record<StaticDocumentId, DocumentContent> = {
       "Share privacy and regulatory research and translate findings into clear stakeholder recommendations",
       "Built a 12-stage internal workflow for passive research, evidence review, approvals, rescans, and recovery",
       "Implemented multi-workspace RBAC, durable jobs, SSRF defenses, audit history, and bounded runtime controls",
-      "Verified the private V1 with 79 automated tests plus lint, type, migration, integrity, and secret checks",
+      "Verified the private platform with 110 passing tests plus lint, type, migration, integrity, and secret checks",
       "Built the complete public front end and responsive website",
       "Maintain the GitHub Pages deployment",
     ],
@@ -267,7 +267,7 @@ const baseDocuments: Record<StaticDocumentId, DocumentContent> = {
   portfolio: {
     title: "Portfolio.repo",
     type: "Repository · React + Three.js",
-    intro: "This portfolio is an interactive 3D room built with procedural models, camera transitions, accessible controls, a simulated operating system, and a Cloudflare deployment.",
+    intro: "This portfolio is an interactive 3D room built with procedural models, camera transitions, accessible controls, a simulated operating system, and a Cloudflare Pages deployment.",
     bullets: ["Three.js room and custom models", "Canvas-rendered monitor states", "Keyboard and touch support", "Automated route and content checks"],
     links: [{ label: "View repository", href: "https://github.com/sil6428/affan-portfolio" }],
   },
@@ -282,6 +282,7 @@ const baseDocuments: Record<StaticDocumentId, DocumentContent> = {
       "Verified 8 upload/download round trips totaling 13,632,512 bytes and resumed a 2,097,152-byte upload after a 700,000-byte interruption",
       "Passed 14 automated tests covering authentication, throttling, isolation, traversal attempts, interruption, tampering, quarantine, and password-safe audit logging",
     ],
+    links: [{ label: "Read public case study", href: "https://affan-shaikh.pages.dev/work/secure-file-transfer" }],
   },
   "secure-messaging": {
     title: "P2P Messaging.wip",
@@ -295,7 +296,10 @@ const baseDocuments: Record<StaticDocumentId, DocumentContent> = {
       "Passed 72 automated tests covering adversarial parsing, tampering, spoofing, metadata integrity, attachment verification, replay attempts, acknowledgements, and end-to-end delivery",
       "Does not claim forward secrecy, NAT traversal, automatic file transfer or quarantine, multi-device support, independent security review, or production readiness",
     ],
-    links: [{ label: "View public repository", href: "https://github.com/sil6428/P2P-messaging" }],
+    links: [
+      { label: "Read project case study", href: "https://affan-shaikh.pages.dev/work/p2p-messaging" },
+      { label: "View public repository", href: "https://github.com/sil6428/P2P-messaging" },
+    ],
   },
   "file-integrity-monitor": {
     title: "File Integrity Monitor.py",
@@ -330,11 +334,11 @@ const baseDocuments: Record<StaticDocumentId, DocumentContent> = {
       "TypeScript and React · Built AFFAN_OS, the portfolio interface, reusable components, window state, keyboard interactions, and accessible controls",
       "Three.js · Built the interactive cyber lab, procedural room models, material systems, raycast selection, camera transitions, printer animation, and separate touch controls",
       "Next.js and CSS · Built responsive routes, project case studies, mobile layouts, metadata, custom illustrations, and the desktop-style file environment",
-      "Cloudflare Workers · Built and repeatedly deployed this portfolio, then verified live Worker versions and public routes",
+      "Cloudflare Pages · Built and repeatedly deployed this portfolio, then verified live deployments and public routes",
       "Git and GitHub · Managed private team development, backup branches, documentation, version history, tests, and public portfolio source",
       "Linux and virtualization · Use Linux tools in coursework and personal systems work while converting older computers into a Proxmox home lab for virtual machines and isolated networks",
       "Google Workspace and web operations · Set up a nonprofit's Workspace environment, coordinate its website team, and own the website hosting and deployment workflow",
-      "IT consulting and platform delivery · Co-founded SSIK with an Ontario Tech classmate, share security-assessment and privacy-research responsibilities, independently built the public website, and delivered a private local-first research platform with 79 automated tests",
+      "IT consulting and platform delivery · Co-founded SSIK with an Ontario Tech classmate, share security-assessment and privacy-research responsibilities, independently built the public website, and delivered a private local-first research platform with 110 passing tests",
       "Systems tools · Worked with Windows Server, Cisco Packet Tracer, Wireshark, SecureCRT, and GitHub across labs and projects",
       "Communication and operations · Applied customer support, transaction accuracy, crowd flow, event coordination, conflict resolution, and team communication through paid and volunteer experience",
     ],
@@ -342,7 +346,7 @@ const baseDocuments: Record<StaticDocumentId, DocumentContent> = {
   education: {
     title: "Ontario Tech.txt",
     type: "Education record",
-    intro: "Bachelor of Information Technology (Honours) in Networking and IT Security at Ontario Tech University in Oshawa, Ontario. I started in September 2024 and expect to graduate in 2028.",
+    intro: "Bachelor of Information Technology (Honours) in Networking and IT Security at Ontario Tech University in Oshawa, Ontario. I started in September 2024 and expect to graduate in April 2028.",
     bullets: [
       "Advanced Networking I",
       "Cybersecurity Fundamentals",
@@ -728,7 +732,7 @@ export default function DesktopOs({ onExit }: { onExit: () => void }) {
         "Quote names containing spaces. Arrow keys recall history and Tab completes commands.",
       ],
       ls: ["Folders: Projects  Network Labs  Education  Experience  Interests  Contact  Inspiration  Learning Log  TryHackMe", "Files: About.txt  Skills.md  Resume.pdf"],
-      whoami: ["Affan Shaikh", "Networking and IT Security student · Ontario Tech · Class of 2028"],
+      whoami: ["Affan Shaikh", "Networking and IT Security student · Ontario Tech · Expected April 2028"],
       status: ["AFFAN_OS online", "Current focus: secure communications, file integrity, networking, and a Proxmox home lab."],
       lights: ["Sending a colour override to the 3D room..."],
       cat: ["Sending three approved pets to the room cat..."],

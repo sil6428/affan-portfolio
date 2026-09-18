@@ -14,5 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/interests/home-lab`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${baseUrl}/work/archtech`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${baseUrl}/work/ssik`, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${baseUrl}/work/p2p-messaging`, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${baseUrl}/work/secure-file-transfer`, changeFrequency: "monthly", priority: 0.9 },
   ];
 }

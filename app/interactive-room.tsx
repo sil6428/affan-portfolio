@@ -43,11 +43,11 @@ const ROOM_ENTRIES: Record<string, RoomEntry> = {
     label: "CO-FOUNDER / TECHNOLOGY OPERATIONS",
     title: "SSIK and Archtech",
     summary: "Co-founding an IT consulting business, building its private intelligence platform, and managing Google Workspace and hosting for a developing nonprofit.",
-    details: ["SSIK co-founder", "Private platform V1", "79 tests", "Google Workspace"],
+    details: ["SSIK co-founder", "Private platform", "110 tests", "Google Workspace"],
     sections: [
       {
         heading: "SSIK co-founder",
-        body: "I co-founded SSIK IT Consulting & Solutions with Ghayas Sher, an Ontario Tech classmate. We share consulting, security assessment, privacy research, and stakeholder responsibilities. I independently built the public website and the private, local-first SSIK Intelligence V1 platform. Its passive research, evidence review, role-based access, approval, rescan, and recovery workflows passed 79 automated tests.",
+        body: "I co-founded SSIK IT Consulting & Solutions with Ghayas Sher, an Ontario Tech classmate. We share consulting, security assessment, privacy research, and stakeholder responsibilities. I independently built the public website and the private, local-first SSIK Intelligence platform. Its passive research, evidence review, role-based access, approval, rescan, and recovery workflows pass 110 tests.",
       },
       {
         heading: "Archtech operations",
@@ -193,7 +193,7 @@ const ROOM_ENTRIES: Record<string, RoomEntry> = {
     sections: [
       {
         heading: "Education",
-        body: "I study Networking and IT Security at Ontario Tech University and expect to graduate in 2028. My work spans network design, routing, system security, Python, TypeScript, and interactive development.",
+        body: "I study Networking and IT Security at Ontario Tech University and expect to graduate in April 2028. My work spans network design, routing, system security, Python, TypeScript, and interactive development.",
       },
       {
         heading: "Experience",

@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL(origin),
     title: "Affan Shaikh | Networking and IT Security",
     description:
-      "Portfolio of Affan Shaikh, a Networking and IT Security student, SSIK co-founder, and builder of security research, network labs, and useful software.",
+      "Portfolio of Affan Shaikh, a Networking and IT Security student, SSIK co-founder, and builder of secure communications, security tools, network labs, and useful software.",
     icons: { icon: "/lab-favicon.svg", shortcut: "/lab-favicon.svg" },
     openGraph: {
       title: "Affan Shaikh | Networking and IT Security",
@@ -73,7 +73,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             "Cisco IOS",
             "Python",
             "TypeScript",
-            "Cloudflare Workers",
+            "Cloudflare Pages",
             "IT consulting",
             "Website hosting",
           ],
