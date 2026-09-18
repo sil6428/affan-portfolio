@@ -28,9 +28,10 @@ Normal HTML routes remain available for direct links and accessible reading:
 - Licensed local CC0 camera model documented in [`THIRD_PARTY_ASSETS.md`](THIRD_PARTY_ASSETS.md)
 - Whole-object raycast highlighting, keyboard access, touch controls, reduced-motion support, and direct route fallbacks
 - Adaptive render tiers, bounded shadows, throttled reflections, idle frame limiting, and hidden-tab suspension
+- A first-frame AFFAN_LAB readiness state and deferred AFFAN_OS desktop module so the room appears deliberately instead of flashing in half-built
 - AFFAN_OS desktop with folders, windows, search, terminal commands, resume viewing, synchronized learning logs, and a month-organized TryHackMe training record
 - Deterministic three-minute chess-set print animation and small room Easter eggs
-- Production deployment on Cloudflare Workers
+- Production deployment on Cloudflare Pages with permanent redirects from the earlier Pages and Workers addresses
 - Automated rendered-route and public-content checks
 
 The detailed build history is in [`CHANGELOG.md`](CHANGELOG.md).
@@ -38,7 +39,7 @@ The detailed build history is in [`CHANGELOG.md`](CHANGELOG.md).
 ## Technology
 
 - TypeScript, React 19, Three.js, Vinext, Vite 8
-- Cloudflare Workers and the Cloudflare Vite plugin
+- Cloudflare Pages, Vinext's Cloudflare runtime output, and the Cloudflare Vite plugin
 - ESLint and the Node.js test runner
 
 ## Local development

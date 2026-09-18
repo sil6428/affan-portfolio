@@ -26,6 +26,7 @@ test("renders the full-screen interactive portfolio", async () => {
   assert.match(html, /Explore the lab/);
   assert.match(html, /Move your pointer to shift the room/);
   assert.match(html, /Interactive 3D portfolio/);
+  assert.match(html, /AFFAN_LAB \/ RENDER PIPELINE/);
   assert.match(html, /3D room objects/);
   assert.match(html, /Technology operations/);
   assert.match(html, /SSIK co-founder/);
@@ -247,6 +248,10 @@ test("includes the device-local soundtrack and hidden terminal", async () => {
   assert.match(room, /highDetail/);
   assert.match(room, /constrainedDevice/);
   assert.match(room, /pixelRatioLimit/);
+  assert.match(room, /antialias: highDetail/);
+  assert.match(room, /lazy\(\(\) => import\("\.\/desktop-os"\)\)/);
+  assert.match(room, /sceneReadyReported/);
+  assert.match(room, /LOADING DESKTOP MODULE/);
   assert.match(room, /mergeGeometries/);
   assert.match(room, /printableBatchCount/);
   assert.match(room, /chess-print-batch-/);

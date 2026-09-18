@@ -1,6 +1,6 @@
 const DESTINATION = 'https://affan-shaikh.pages.dev';
 
-export default {
+const redirectWorker = {
   fetch(request: Request): Response {
     const incoming = new URL(request.url);
     const destination = new URL(DESTINATION);
@@ -10,3 +10,5 @@ export default {
     return Response.redirect(destination.toString(), 308);
   },
 };
+
+export default redirectWorker;

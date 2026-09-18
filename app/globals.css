@@ -2772,6 +2772,58 @@ main {
   display: block;
   touch-action: pan-y;
 }
+.room-scene-loader,
+.room-desktop-loader {
+  position: absolute;
+  inset: 0;
+  z-index: 18;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 10px;
+  color: #7f969d;
+  background:
+    linear-gradient(rgba(119,231,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(119,231,255,.025) 1px, transparent 1px),
+    #05080c;
+  background-size: 32px 32px;
+  font: 7px "DM Mono", monospace;
+  letter-spacing: .16em;
+  transition: opacity .32s ease, visibility .32s ease;
+}
+.room-scene-loader[data-hidden="true"] {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.room-scene-loader strong,
+.room-desktop-loader strong {
+  color: #d7e8eb;
+  font-size: 9px;
+  font-weight: 500;
+}
+.room-scene-loader-mark {
+  display: flex;
+  gap: 5px;
+}
+.room-scene-loader-mark i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--topology-cyan);
+  box-shadow: 0 0 12px rgba(119,231,255,.75);
+  animation: room-loader-pulse .9s ease-in-out infinite alternate;
+}
+.room-scene-loader-mark i:nth-child(2) { animation-delay: .16s; }
+.room-scene-loader-mark i:nth-child(3) { animation-delay: .32s; }
+.room-desktop-loader {
+  z-index: 30;
+  background: rgba(3,7,11,.98);
+}
+@keyframes room-loader-pulse {
+  from { opacity: .22; transform: translateY(2px); }
+  to { opacity: 1; transform: translateY(-2px); }
+}
 @media (pointer: coarse) {
   .room-canvas canvas { touch-action: none; }
 }

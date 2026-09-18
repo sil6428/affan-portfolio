@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment.js";
@@ -12,8 +12,9 @@ import { OutputPass } from "three/examples/jsm/postprocessing/OutputPass.js";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
 import { mergeGeometries } from "three/examples/jsm/utils/BufferGeometryUtils.js";
-import DesktopOs from "./desktop-os";
 import { playSiteSfx } from "./site-sfx";
+
+const DesktopOs = lazy(() => import("./desktop-os"));
 
 type HotspotData = {
   key?: string;
@@ -339,6 +340,7 @@ export default function InteractiveRoom() {
   const [visitedKeys, setVisitedKeys] = useState<string[]>([]);
   const [roomSecret, setRoomSecret] = useState("");
   const [directoryOpen, setDirectoryOpen] = useState(false);
+  const [sceneReady, setSceneReady] = useState(false);
   const focusRef = useRef<(key: string) => void>(() => undefined);
   const dismissRef = useRef<() => void>(() => undefined);
   const previewRef = useRef<(key: string | null) => void>(() => undefined);
@@ -385,7 +387,7 @@ export default function InteractiveRoom() {
     const highDetail = finePointer && !constrainedDevice && !reducedMotion;
     const pixelRatioLimit = highDetail ? 1.5 : 1.1;
     const renderer = new THREE.WebGLRenderer({
-      antialias: true,
+      antialias: highDetail,
       alpha: true,
       powerPreference: "high-performance",
     });
@@ -3372,6 +3374,7 @@ export default function InteractiveRoom() {
     };
     document.addEventListener("visibilitychange", handleVisibilityChange);
     let frame = 0;
+    let sceneReadyReported = false;
     const render = (timestamp = performance.now()) => {
       if (!pageVisible) {
         frame = window.requestAnimationFrame(render);
@@ -3561,6 +3564,12 @@ export default function InteractiveRoom() {
       }
       if (composer) composer.render();
       else renderer.render(scene, camera);
+      if (!sceneReadyReported) {
+        sceneReadyReported = true;
+        window.requestAnimationFrame(() => {
+          if (!roomDisposed) setSceneReady(true);
+        });
+      }
       if (liveReflector && reflectorOnBeforeRender) {
         liveReflector.onBeforeRender = reflectorOnBeforeRender;
       }
@@ -3655,6 +3664,11 @@ export default function InteractiveRoom() {
         </div>
       </div>
       <div className="room-canvas" ref={hostRef} />
+      <div className="room-scene-loader" data-hidden={sceneReady || undefined} role="status" aria-live="polite">
+        <div className="room-scene-loader-mark" aria-hidden="true"><i /><i /><i /></div>
+        <strong>AFFAN_LAB / RENDER PIPELINE</strong>
+        <span>{sceneReady ? "SCENE READY" : "INITIALIZING ROOM"}</span>
+      </div>
       <div className="room-target-cursor" aria-hidden="true"><i /><i /><i /><i /></div>
       <div className="room-click-spark" aria-hidden="true"><i /><i /><i /><i /><i /><i /><i /><i /></div>
       <nav className="room-side-index" aria-label="Quick room navigation">
@@ -3685,7 +3699,18 @@ export default function InteractiveRoom() {
           </button>
         ))}
       </nav>
-      {desktopActive && <DesktopOs onExit={() => focusRef.current("__desktop-off")} />}
+      {desktopActive && (
+        <Suspense
+          fallback={(
+            <div className="room-desktop-loader" role="status">
+              <strong>AFFAN_OS</strong>
+              <span>LOADING DESKTOP MODULE</span>
+            </div>
+          )}
+        >
+          <DesktopOs onExit={() => focusRef.current("__desktop-off")} />
+        </Suspense>
+      )}
       <div className="room-fluid-hint" aria-hidden="true">
         <span><i /> SCENE RESPONSIVE</span>
         <span>Move pointer / shift perspective</span>
