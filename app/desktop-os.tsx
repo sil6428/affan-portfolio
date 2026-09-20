@@ -88,7 +88,7 @@ const baseFolders: Record<StaticFolderId, FolderContent> = {
       { id: "archtech", label: "Archtech Operations.project", meta: "Nonprofit technology", icon: "code", view: { kind: "document", id: "archtech" } },
       { id: "portfolio", label: "Portfolio.repo", meta: "Three.js + React", icon: "code", view: { kind: "document", id: "portfolio" } },
       { id: "secure-transfer", label: "Secure File Transfer.py", meta: "TLS + verified transfer", icon: "code", view: { kind: "document", id: "secure-file-transfer" } },
-      { id: "secure-messaging", label: "P2P Messaging.wip", meta: "Public collaborative WIP", icon: "code", view: { kind: "document", id: "secure-messaging" } },
+      { id: "secure-messaging", label: "P2P Messaging.wip", meta: "Local secure messaging UI", icon: "code", view: { kind: "document", id: "secure-messaging" } },
       { id: "integrity", label: "File Integrity Monitor.py", meta: "Python + SHA-256", icon: "code", view: { kind: "document", id: "file-integrity-monitor" } },
       { id: "events", label: "Event Planner.js", meta: "JavaScript", icon: "code", view: { kind: "document", id: "event-planner" } },
     ],
@@ -287,13 +287,14 @@ const baseDocuments: Record<StaticDocumentId, DocumentContent> = {
   "secure-messaging": {
     title: "P2P Messaging.wip",
     type: "Public collaborative work in progress · Python cryptography + TCP",
-    intro: "A collaborative educational prototype for direct communication between explicitly verified peers. It supports encrypted local/LAN messaging, contact verification, local history, and signed attachment references while remaining clearly marked as unaudited work in progress.",
+    intro: "A collaborative educational prototype for direct communication between explicitly verified peers. Its local browser workspace supports encrypted local/LAN messaging, distinct conversations, contact verification, encrypted history, and signed attachment references while remaining clearly marked as unaudited work in progress.",
     bullets: [
       "Protects Ed25519 signing and X25519 exchange identities with passwords, self-signed peer cards, and explicit out-of-band fingerprint verification",
       "Encrypts messages and acknowledgements with ChaCha20-Poly1305, signs envelopes with Ed25519, and associates received records with the authenticated sender key",
       "Adds a verified contact book, two-way chat, encrypted local history with authenticated metadata, and signed filename/size/SHA-256 attachment references",
+      "Adds local device unlock, HTTP-only sessions, CSRF-protected mutations, authenticated replies, search, drafts, and pinned, muted, and archived conversation views",
       "Enforces 64 KiB frame and 4 KiB plaintext limits, recipient and expiry checks, persistent replay rejection, post-authentication rate limits, and connection read timeouts",
-      "Passed 72 automated tests covering adversarial parsing, tampering, spoofing, metadata integrity, attachment verification, replay attempts, acknowledgements, and end-to-end delivery",
+      "Passed 75 automated tests covering browser authentication, CSRF, conversation controls, adversarial parsing, tampering, spoofing, metadata integrity, attachment verification, replay attempts, acknowledgements, and end-to-end delivery",
       "Does not claim forward secrecy, NAT traversal, automatic file transfer or quarantine, multi-device support, independent security review, or production readiness",
     ],
     links: [
@@ -327,7 +328,7 @@ const baseDocuments: Record<StaticDocumentId, DocumentContent> = {
       "Networking · Configured IPv4 and IPv6 addressing, subnetting, VLANs, access ports, 802.1Q trunks, DHCP, DNS, NAT, STP, and inter-VLAN routing in Cisco IOS and Packet Tracer labs",
       "Troubleshooting · Used ping, traceroute, show commands, Wireshark, packet captures, routing tables, and interface state to isolate connectivity and configuration problems",
       "Cybersecurity · Applied authentication, authorization, role-based access control, encryption, hashing, and vulnerability analysis through security coursework and personal projects",
-      "Secure messaging · Co-developed verified peer contacts, encrypted and signed direct messaging, encrypted local history, attachment-reference integrity checks, replay protection, and transport limits in a 72-test collaborative prototype",
+      "Secure messaging · Co-developed a local browser workspace with verified peer contacts, encrypted and signed direct messaging, authenticated replies, encrypted history, attachment-reference checks, replay protection, and transport limits in a 75-test collaborative prototype",
       "Secure transfer · Built authenticated TLS transfers with certificate and hostname verification, resumable byte offsets, recipient isolation, SHA-256 re-hashing, mismatch quarantine, and 14 automated tests",
       "Python · Built a SHA-256 file integrity monitor with deterministic baselines, JSON reports, four change categories, script-friendly exit codes, and 7 automated tests",
       "JavaScript and DOM · Built an event-planning tool that adds, edits, displays, and removes events while keeping the page state synchronized",
@@ -1054,10 +1055,10 @@ export default function DesktopOs({ onExit }: { onExit: () => void }) {
             <div className="affan-os-resume-viewer">
               <nav aria-label="Resume controls">
                 <div><strong>Affan_Shaikh_Resume.pdf</strong><span>1 page</span></div>
-                <a href="/Affan_Shaikh_Resume.pdf?v=2026-09-17-p2p" target="_blank" rel="noreferrer">Open full size <ExternalMark /></a>
-                <a href="/Affan_Shaikh_Resume.pdf?v=2026-09-17-p2p" download>Download PDF</a>
+                <a href="/Affan_Shaikh_Resume.pdf?v=2026-09-20-relay" target="_blank" rel="noreferrer">Open full size <ExternalMark /></a>
+                <a href="/Affan_Shaikh_Resume.pdf?v=2026-09-20-relay" download>Download PDF</a>
               </nav>
-              <iframe src="/Affan_Shaikh_Resume.pdf?v=2026-09-17-p2p#view=FitH&toolbar=0" title="Affan Shaikh resume PDF" />
+              <iframe src="/Affan_Shaikh_Resume.pdf?v=2026-09-20-relay#view=FitH&toolbar=0" title="Affan Shaikh resume PDF" />
             </div>
           )}
 

@@ -88,7 +88,7 @@ test("renders the public secure-communications case studies", async () => {
   const p2p = await p2pResponse.text();
   assert.match(p2p, /P2P Messaging/);
   assert.match(p2p, /Ghayas Sher/);
-  assert.match(p2p, /72 automated tests/);
+  assert.match(p2p, /75 automated tests/);
   assert.match(p2p, /forward secrecy/);
   assert.match(p2p, /github\.com\/sil6428\/P2P-messaging/);
 
@@ -592,8 +592,8 @@ test("includes the device-local soundtrack and hidden terminal", async () => {
   assert.match(desktopOs, /Secure File Transfer\.py/);
   assert.match(desktopOs, /14 automated tests/);
   assert.match(desktopOs, /P2P Messaging\.wip/);
-  assert.match(desktopOs, /Public collaborative WIP/);
-  assert.match(desktopOs, /72 automated tests/);
+  assert.match(desktopOs, /Local secure messaging UI/);
+  assert.match(desktopOs, /75 automated tests/);
   assert.match(desktopOs, /github\.com\/sil6428\/P2P-messaging/);
   assert.match(desktopOs, /unaudited work in progress/);
   assert.doesNotMatch(desktopOs, /CICIDS2017\.research/);
@@ -601,7 +601,7 @@ test("includes the device-local soundtrack and hidden terminal", async () => {
   assert.doesNotMatch(desktopOs, /github\.com\/sil6428\/secure-messaging-platform/);
   assert.match(desktopOs, /Event Planner\.js/);
   assert.match(desktopOs, /Resume\.pdf/);
-  assert.match(desktopOs, /Affan_Shaikh_Resume\.pdf\?v=2026-09-17-p2p#view=FitH/);
+  assert.match(desktopOs, /Affan_Shaikh_Resume\.pdf\?v=2026-09-20-relay#view=FitH/);
   assert.match(desktopOs, /Affan Shaikh resume PDF/);
   assert.match(desktopOs, /Ontario Tech\.txt/);
   assert.match(desktopOs, /Security\+\.plan/);
