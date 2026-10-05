@@ -1,0 +1,326 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------------------------------------
+ * TERMINAL — design system, taken from Affan's business card
+ * Near-black paper, white mono for the line that matters, grey scattered terminal words as
+ * texture. Green (the ASCII name) and rust (the "TNT") are ACCENTS: a few deliberate touches per
+ * screen, never the default colour for labels, links or borders. Everything is set in Geist Mono.
+ * ---------------------------------------------------------------------------------------------- */
+
+@theme {
+  /* Surfaces */
+  --color-ink-950: #060606;
+  --color-ink-900: #0b0b0b;
+  --color-ink-850: #101010;
+  --color-ink-800: #161616;
+  --color-ink-700: #1f1f1f;
+
+  /* Text */
+  --color-fg: #eeeeee;
+  --color-fg-muted: #a8a8a8;
+  --color-fg-dim: #808080;
+
+  /* Accents */
+  --color-phosphor: #3fe07a;
+  --color-phosphor-soft: #9cf3b8;
+  --color-phosphor-deep: #1f9e4f;
+  --color-chalk: #e8e8e8;
+  --color-ash: #8a8a8a;
+  --color-rust: #d9622f;
+  --color-rust-deep: #823217;
+  --color-alert: #ff5f56;
+
+  /* Hairlines */
+  --color-line: rgb(238 238 238 / 0.08);
+  --color-line-strong: rgb(238 238 238 / 0.16);
+
+  /* Type — one family, like the card */
+  --font-sans: 'Geist Mono Variable', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --font-mono: 'Geist Mono Variable', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --font-serif: 'Geist Mono Variable', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  --text-display: clamp(2.5rem, 7.5vw, 8rem);
+  --text-display--line-height: 0.95;
+  --text-mega: clamp(2rem, 5vw, 5rem);
+  --text-mega--line-height: 1;
+
+  /* Radius — terminal-sharp */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 10px;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
+
+  --animate-pulse-dot: pulse-dot 2.4s var(--ease-out-expo) infinite;
+  @keyframes pulse-dot {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.45;
+      transform: scale(0.82);
+    }
+  }
+
+  /* Block caret, as in a shell prompt. */
+  --animate-blink: blink 1.1s steps(1, end) infinite;
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+}
+
+:root {
+  color-scheme: dark;
+  --glow-phosphor: 0 0 0 1px rgb(63 224 122 / 0.35), 0 10px 40px -12px rgb(63 224 122 / 0.4);
+  --glow-chalk: 0 0 0 1px rgb(232 232 232 / 0.25), 0 10px 40px -12px rgb(232 232 232 / 0.25);
+  /* Room left under the last block of a page. Phones have no dock; desktop clears the captioned dock
+     (panel top ≈ 92px above the viewport bottom, ~98px with a magnified key). */
+  --dock-clearance: 112px;
+}
+@media (min-width: 1024px) {
+  :root {
+    --dock-clearance: 132px;
+  }
+}
+
+@layer base {
+  html {
+    background: var(--color-ink-950);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-variant-ligatures: none;
+    scrollbar-color: var(--color-ink-700) var(--color-ink-950);
+    /* Keep focused elements and anchor targets clear of the fixed 64px header. */
+    scroll-padding-top: 5rem;
+  }
+  /* /log adds a sticky section strip under the header. */
+  html:has(#case-files) {
+    scroll-padding-top: 8.5rem;
+  }
+  /* Desktop: the fixed dock sits at the bottom of the viewport. */
+  @media (min-width: 1024px) {
+    html {
+      scroll-padding-bottom: 8rem;
+    }
+  }
+
+  body {
+    min-height: 100dvh;
+    background: var(--color-ink-950);
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background: rgb(63 224 122 / 0.9);
+    color: var(--color-ink-950);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-phosphor);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Route changes move focus to the new page's h1 (programmatic, tabindex=-1): no ring for that. */
+  h1[tabindex='-1']:focus {
+    outline: none;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  /* Raised surface: flat ink with a hairline, no blur (cheap to paint on phones). */
+  .panel {
+    position: relative;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-line);
+    background: var(--color-ink-900);
+  }
+
+  /* Corner brackets — a terminal selection marker around key surfaces. */
+  .brackets {
+    position: relative;
+  }
+  .brackets::before,
+  .brackets::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    pointer-events: none;
+    border-color: var(--bracket-color, var(--color-fg-dim));
+    opacity: var(--bracket-opacity, 0.9);
+  }
+  .brackets::before {
+    top: -1px;
+    left: -1px;
+    border-top: 1.5px solid;
+    border-left: 1.5px solid;
+  }
+  .brackets::after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 1.5px solid;
+    border-right: 1.5px solid;
+  }
+
+  /* Small technical label: mono, small, muted. Text renders as written (no case transform or
+     tracking), so names like "IPv4" and "GitHub" keep their real casing. */
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-transform: none;
+    color: var(--color-fg-muted);
+  }
+
+  /* Faint measurement grid used behind content sections. */
+  .grid-lines {
+    background-image:
+      linear-gradient(to right, rgb(238 238 238 / 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(238 238 238 / 0.035) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  /* Decorative card words (TermField): drawn from a data attribute so they stay out of the
+   * accessibility tree and contrast checks — they are texture, not content. */
+  .term-word::before {
+    content: attr(data-text);
+  }
+  /* A hovered word swaps in its DecryptedText scramble; hide the painted copy meanwhile. */
+  .term-word[data-hot]::before {
+    content: none;
+  }
+
+  /* TermField drift: each depth layer floats back and forth on its own path (transform only). */
+  .term-layer {
+    animation: term-drift var(--dur) ease-in-out infinite alternate;
+  }
+  [data-paused] > .term-layer {
+    animation-play-state: paused;
+  }
+  @keyframes term-drift {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(var(--dx), var(--dy), 0);
+    }
+  }
+
+  /* Pre-formatted ASCII art (figlet name, cats, monograms). */
+  .ascii {
+    font-family: var(--font-mono);
+    white-space: pre;
+    line-height: 1.05;
+    letter-spacing: 0;
+  }
+
+  /* Animated underline for inline text links. */
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.4s var(--ease-out-expo), color 0.2s;
+  }
+  .link-underline:hover,
+  .link-underline:focus-visible {
+    background-size: 100% 1px;
+  }
+}
+
+/* A real Tailwind utility (not a plain class) so variants like the footer's `lg:pb-dock` are generated. */
+@utility pb-dock {
+  padding-bottom: var(--dock-clearance);
+}
+
+@layer utilities {
+  .container-signal {
+    width: 100%;
+    max-width: 1400px;
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 4vw, 2.5rem);
+  }
+
+  .sr-only-focusable:not(:focus):not(:focus-within) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}
+
+/* Reduced motion: the site stays polished but static. Components also read the
+ * MotionPreference context so the in-site toggle behaves identically. */
+@media (prefers-reduced-motion: reduce) {
+  html:not([data-motion='full']) *,
+  html:not([data-motion='full']) *::before,
+  html:not([data-motion='full']) *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+html[data-motion='reduced'] *,
+html[data-motion='reduced'] *::before,
+html[data-motion='reduced'] *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* ------------------------------------------------------------------------------------------------
+ * shell — global chrome styles (Developer Mode outlines, GlitchText keyframes)
+ * ---------------------------------------------------------------------------------------------- */
+@theme {
+  --animate-glitch-after: glitch var(--after-duration, 3s) infinite linear alternate-reverse;
+  --animate-glitch-before: glitch var(--before-duration, 2s) infinite linear alternate-reverse;
+  @keyframes glitch {
+    0% { clip-path: inset(20% 0 50% 0); }
+    10% { clip-path: inset(10% 0 60% 0); }
+    20% { clip-path: inset(15% 0 55% 0); }
+    30% { clip-path: inset(25% 0 35% 0); }
+    40% { clip-path: inset(30% 0 40% 0); }
+    50% { clip-path: inset(40% 0 20% 0); }
+    60% { clip-path: inset(10% 0 60% 0); }
+    70% { clip-path: inset(15% 0 55% 0); }
+    80% { clip-path: inset(25% 0 35% 0); }
+    90% { clip-path: inset(30% 0 40% 0); }
+    100% { clip-path: inset(20% 0 50% 0); }
+  }
+}
+
+html[data-devmode] [data-rb] {
+  outline: 1px dashed rgb(63 224 122 / 0.6);
+  outline-offset: -1px;
+}
+html[data-devmode] [data-rb]:hover {
+  outline-color: var(--color-rust);
+}

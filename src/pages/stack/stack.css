@@ -1,0 +1,55 @@
+/* /stack — page-local keyframes and graph styles (terminal theme). */
+
+@keyframes stack-edge-flow {
+  to {
+    stroke-dashoffset: -0.36;
+  }
+}
+
+/* Edge draw-in: paths use pathLength="1". */
+.stack-edge {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition:
+    stroke-dashoffset 1.4s var(--ease-out-expo),
+    stroke 0.3s ease,
+    opacity 0.3s ease;
+}
+.stack-graph[data-drawn='true'] .stack-edge {
+  stroke-dashoffset: 0;
+}
+
+/* Signal packets travelling along highlighted edges — only while a node is hovered or pinned. */
+.stack-edge-flow {
+  stroke-dasharray: 0.012 0.024;
+  animation: stack-edge-flow 2.4s linear infinite;
+}
+
+/* Off-screen: packets hold still. */
+.stack-graph[data-live='false'] .stack-edge-flow {
+  animation-play-state: paused;
+}
+
+/* Reduced motion (OS or in-site toggle): everything static and fully drawn. */
+.stack-static .stack-edge {
+  stroke-dashoffset: 0;
+  transition: none;
+}
+.stack-static .stack-edge-flow {
+  animation: none;
+  stroke-dasharray: none;
+}
+
+/* Terminal input: no native search clear button; the caret is the one green in the prompt. */
+.stack-terminal-input {
+  caret-color: var(--color-phosphor);
+}
+.stack-terminal-input::-webkit-search-cancel-button {
+  display: none;
+}
+
+/* Thin, quiet scrollbars for the scrollable instrument panels. */
+.stack-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-ink-700) transparent;
+}

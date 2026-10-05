@@ -1,0 +1,42 @@
+/* Home page ("/", ~). Scoped helpers the shared design system does not ship. */
+
+/* ---- Hero: the figlet name scales so its widest line always fits the column ---- */
+.home-ascii {
+  container-type: inline-size;
+}
+.home-ascii-art {
+  /* Geist Mono advances 0.6em per glyph; 0.62 leaves a hair of slack for rounding. */
+  font-size: min(var(--ascii-max, 17px), calc(100cqi / (var(--ascii-cols) * 0.62)));
+  line-height: 1.08;
+}
+
+/* The radar sits behind the card but never behind the name: the centre is masked out. */
+.home-radar {
+  mask-image: radial-gradient(ellipse 52% 40% at 50% 47%, transparent 38%, #000 82%);
+  -webkit-mask-image: radial-gradient(ellipse 52% 40% at 50% 47%, transparent 38%, #000 82%);
+}
+
+
+/* ---- Stack marquee on touch screens: a steady CSS drift instead of the per-frame ScrollVelocity loop ---- */
+.home-drift-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: drift 60s linear infinite;
+}
+.home-drift-reverse {
+  animation-direction: reverse;
+}
+.home-drift-paused .home-drift-track {
+  animation-play-state: paused;
+}
+@keyframes drift {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-drift-track {
+    animation: none;
+  }
+}
