@@ -92,7 +92,7 @@ export function socialMeta(siteUrl: string | undefined): Plugin {
     transformIndexHtml(html) {
       if (raw && !valid) this.warn(`[social-meta] VITE_SITE_URL "${raw}" is not an http(s) URL; keeping relative og:image`);
       if (!origin) return html;
-      const image = `${origin}/art/og.jpg`;
+      const image = `${origin}/art/business-card-og.jpg`;
       return html.replace(
         /<meta property="og:image" content="[^"]*"\s*\/>/,
         `<meta property="og:image" content="${image}" />\n    <meta property="og:url" content="${origin}/" />\n    <meta name="twitter:image" content="${image}" />`
