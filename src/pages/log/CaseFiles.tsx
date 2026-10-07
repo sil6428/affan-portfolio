@@ -22,7 +22,7 @@ const FLAGS: { value: 'all' | Category; label: string }[] = [
   { value: 'Security tooling', label: 'security' },
   { value: 'Secure communications', label: 'comms' },
   { value: 'Infrastructure', label: 'infra' },
-  { value: 'Platform & early-stage venture', label: 'venture' },
+  { value: 'Platform & student-led initiative', label: 'initiative' },
   { value: 'Web & extensions', label: 'web' }
 ];
 
@@ -185,7 +185,7 @@ export default function CaseFiles() {
           id="case-files"
           command="ls -la"
           title="Case files"
-          kicker={`${projects.length} documented builds: security tooling, secure communications, infrastructure, an early-stage venture platform, and web work. Each file covers the problem, the decisions, the evidence, and what it does not claim.`}
+          kicker={`${projects.length} documented builds: security tooling, secure communications, infrastructure, a student-led initiative's platform, and web work. Each file covers the problem, the decisions, the evidence, and what it does not claim.`}
         />
 
         {/* Filter: ReactBits RubberSegment as `--category` flags */}

@@ -29,7 +29,7 @@ export const experience: ExperienceEntry[] = [
     dateLabel: 'May 2026 — Present',
     kind: 'venture',
     summary:
-      'Co-founded an early-stage student IT and cybersecurity venture with Ontario Tech classmate Ghayas Sher. We develop service scopes, security-control review methods, privacy research, and the internal workflow for possible future authorized engagements.',
+      'Co-founded a student-led IT and cybersecurity initiative with Ontario Tech classmate Ghayas Sher. We define service scopes, privacy research, control-review methods, and client-ready recommendations, plus the internal workflow for possible future authorized engagements.',
     highlights: [
       'Independently delivered the public website and the private, local-first SSIK Intelligence platform.',
       'Built multi-workspace RBAC, SSRF-hardened passive collection, durable jobs, evidence-linked review, approval-gated mock outreach, rescans, and backup and restore controls.',
@@ -38,17 +38,18 @@ export const experience: ExperienceEntry[] = [
     caseStudy: 'ssik'
   },
   {
-    id: 'archtech',
-    org: 'Archtech',
+    id: 'arch-narrative',
+    org: 'Arch Narrative',
     location: 'Oshawa, ON',
-    role: 'Technical Operations and Hosting',
-    start: '2026',
+    role: 'Head of Internal Technical Operations',
+    start: '2026-01',
     end: 'Present',
-    dateLabel: '2026 — Present',
+    dateLabel: 'Jan 2026 — Present',
     kind: 'operations',
     summary:
-      'Established Google Workspace, coordinate the contributors building the private website, and own hosting and deployment for a developing nonprofit.',
+      'Built and manage the internal systems used by 200+ CASIC volunteers, students, staff, and organizational leaders at a developing nonprofit.',
     highlights: [
+      'Administer Google Workspace, access, permissions, internal tools, repositories, and deployment workflows.',
       'Organizational account ownership and recovery paths that do not depend on one person.',
       'Understandable handoffs, repeatable releases, and verification of the live result.'
     ],

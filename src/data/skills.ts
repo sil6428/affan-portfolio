@@ -75,6 +75,7 @@ export const skills: Skill[] = [
   { name: 'RBAC', category: 'security', usedIn: ['ssik'] },
   { name: 'SSRF defenses', category: 'security', usedIn: ['ssik'] },
   { name: 'Threat analysis', category: 'security', usedIn: [] },
+  { name: 'Input validation', category: 'security', usedIn: [] },
   { name: 'Hardening', category: 'security', usedIn: [] },
   { name: 'Firewalls', category: 'security', usedIn: [] },
   { name: 'IDS / IPS', category: 'security', usedIn: [] },
@@ -88,11 +89,13 @@ export const skills: Skill[] = [
   { name: 'JSON', category: 'development', icon: 'json', usedIn: ['file-integrity-monitor'] },
   { name: 'TypeScript', category: 'development', icon: 'typescript', usedIn: [] },
   { name: 'JavaScript', category: 'development', icon: 'javascript', usedIn: ['otnow'] },
+  { name: 'HTML/CSS', category: 'development', usedIn: [] },
   { name: 'React', category: 'development', icon: 'react', usedIn: ['interactive-portfolio'] },
   { name: 'Next.js', category: 'development', icon: 'nextdotjs', usedIn: ['interactive-portfolio'] },
   { name: 'Node.js', category: 'development', icon: 'nodedotjs', usedIn: [] },
   { name: 'REST APIs', category: 'development', usedIn: ['otnow'] },
   { name: 'Chrome Manifest V3', category: 'development', icon: 'googlechrome', usedIn: ['otnow'] },
+  { name: 'Canvas APIs', category: 'development', usedIn: ['otnow'] },
   { name: 'Three.js', category: 'development', icon: 'threedotjs', usedIn: ['interactive-portfolio'] },
 
   // Systems & tools

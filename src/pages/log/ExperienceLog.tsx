@@ -460,8 +460,8 @@ export default function ExperienceLog() {
   const kicker = useMemo(
     () =>
       desktop
-        ? 'Three roles, newest first, across an early-stage venture, nonprofit operations, and retail work. Pick one to read the full entry.'
-        : 'Three roles, newest first, across an early-stage venture, nonprofit operations, and retail work. Tap a record to expand it.',
+        ? 'Three roles, newest first, across a student-led initiative, nonprofit operations, and retail work. Pick one to read the full entry.'
+        : 'Three roles, newest first, across a student-led initiative, nonprofit operations, and retail work. Tap a record to expand it.',
     [desktop]
   );
   return (

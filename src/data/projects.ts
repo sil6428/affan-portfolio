@@ -45,7 +45,7 @@ export interface Project {
     | 'Security tooling'
     | 'Secure communications'
     | 'Infrastructure'
-    | 'Platform & early-stage venture'
+    | 'Platform & student-led initiative'
     | 'Web & extensions';
   status: string;
   statusTone: StatusTone;
@@ -298,7 +298,8 @@ const projectCatalog: Project[] = [
       { label: 'Interface', value: 'Transfer Desk browser workspace + CLI' },
       { label: 'Integrity', value: 'SHA-256' },
       { label: 'Validation', value: '8 verified round trips · resume recovery' },
-      { label: 'Measured transfer', value: '13,632,512 bytes' }
+      { label: 'Measured transfer', value: '13,632,512 bytes' },
+      { label: 'Benchmark', value: '16 concurrent workers · 2K verified TLS transfers · 1K unique files' }
     ],
     metrics: [
       { value: 8, label: 'verified upload/download round trips', detail: '13,632,512 bytes total' },
@@ -385,11 +386,11 @@ const projectCatalog: Project[] = [
     title: 'SSIK IT Consulting & Solutions',
     shortTitle: 'SSIK',
     kicker: 'Student venture · Co-founder · Platform builder',
-    category: 'Platform & early-stage venture',
+    category: 'Platform & student-led initiative',
     status: 'Active',
     statusTone: 'active',
     summary:
-      'An early-stage student IT and cybersecurity venture — I built its public website and the private, local-first SSIK Intelligence platform.',
+      'A student-led IT and cybersecurity initiative — I built its public website and the private, local-first SSIK Intelligence platform.',
     lead: 'I co-founded SSIK with Ghayas Sher, an Ontario Tech classmate. We are developing potential service scopes, review methods, and the boundaries an authorized engagement would require. I additionally built the public website and a private internal platform for controlled research and review.',
     role: 'Co-founder and platform builder',
     collaborators: ['Ghayas Sher'],
@@ -509,9 +510,9 @@ const projectCatalog: Project[] = [
     ],
     metrics: [
       {
-        value: 380,
-        label: 'Canvas items organized',
-        detail: 'public opt-in dashboard · 8 reporting installations · October 5, 2026'
+        value: 450,
+        label: 'Canvas items organized (450+)',
+        detail: 'recorded by opt-in telemetry · non-participant data stays local · October 2026'
       }
     ],
     links: [

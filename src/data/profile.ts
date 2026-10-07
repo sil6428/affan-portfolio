@@ -42,6 +42,9 @@ export const profile = {
       'Coursework connects Cisco routing and switching, IPv4/IPv6 design, network services, operating systems, Python, cryptography, cybercrime, trust, and security controls.',
     coursework: [
       'Advanced Networking I',
+      'Computer Security',
+      'Cryptography',
+      'Cloud Computing',
       'Cybersecurity Foundations',
       'Programming I with Python',
       'Computer Systems'
@@ -62,7 +65,7 @@ export const profile = {
   bio: [
     "I'm completing Ontario Tech University's Networking and IT Security degree, with graduation expected in April 2028. My work moves between configuring routed and switched networks, examining how security controls fail, and building software that makes technical evidence understandable to the person operating it.",
     'I learn best by building and verifying. A Cisco lab makes a failed route observable through interface state, routing tables, packet captures, and end-to-end validation. A security application turns broad terms such as identity, authorization, integrity, replay protection, or recovery into decisions that have to survive malformed input and interrupted workflows.',
-    'I co-founded SSIK with my Ontario Tech classmate Ghayas Sher as an early-stage student venture. We develop service scopes and review methods, and I independently built its public website and private, local-first SSIK Intelligence platform. I also support Google Workspace, account continuity, website-team coordination, hosting, and deployment for a developing nonprofit while studying Security+ objectives and expanding a Proxmox home lab.',
+    'I co-founded SSIK with my Ontario Tech classmate Ghayas Sher as a student-led IT and cybersecurity initiative. We develop service scopes and review methods, and I independently built its public website and private, local-first SSIK Intelligence platform. I also support Google Workspace, account continuity, website-team coordination, hosting, and deployment for a developing nonprofit while studying Security+ objectives and expanding a Proxmox home lab.',
     'I am looking for co-op work where I can contribute to real infrastructure and learn from experienced operators. Network operations, security operations, systems administration, infrastructure security, and security-focused development all fit the direction of the work collected here.'
   ],
   /** A line from the /info page that summarizes how the work is documented. */
