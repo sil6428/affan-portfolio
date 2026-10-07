@@ -81,7 +81,7 @@ export default function CaseHeader({ project }: { project: Project }) {
   const desktop = useIsDesktop();
   const { enabled: devMode } = useDevMode();
   const [primary, ...secondary] = project.links;
-  // "Source private" only where the project's own facts say so (SFT, Archtech); otherwise no claim.
+  // "Source private" only where the project's own facts say so (SFT, Arch Narrative); otherwise no claim.
   const sourcePrivate = project.facts.some((f) => (f.label === 'Source' || f.label === 'Repository') && f.value === 'Private');
   const seed = Number(project.index) * 131 + 17;
 

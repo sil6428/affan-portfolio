@@ -53,7 +53,7 @@ export const experience: ExperienceEntry[] = [
       'Organizational account ownership and recovery paths that do not depend on one person.',
       'Understandable handoffs, repeatable releases, and verification of the live result.'
     ],
-    caseStudy: 'archtech'
+    caseStudy: 'arch-narrative'
   },
   {
     id: 'winners',

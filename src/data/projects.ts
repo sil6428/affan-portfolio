@@ -690,10 +690,10 @@ const projectCatalog: Project[] = [
     sourcePath: '/work/cisco-networking-labs'
   },
   {
-    slug: 'archtech',
+    slug: 'arch-narrative',
     index: '07',
-    title: 'Archtech Nonprofit Technology Operations',
-    shortTitle: 'Archtech Ops',
+    title: 'Arch Narrative Internal Technical Operations',
+    shortTitle: 'Arch Narrative',
     kicker: 'Nonprofit infrastructure · Active',
     category: 'Infrastructure',
     status: 'Active, private development',
@@ -701,10 +701,10 @@ const projectCatalog: Project[] = [
     summary:
       'Google Workspace, access ownership, contributor coordination, and the hosting and deployment path for a developing nonprofit.',
     lead: 'I set up the collaboration foundation for a developing nonprofit, coordinate the contributors building its website, and own the hosting and deployment path that turns private team work into a stable release. The work combines account administration, access ownership, technical communication, release coordination, and hands-on implementation support.',
-    role: 'Google Workspace and web hosting',
+    role: 'Head of Internal Technical Operations',
     stack: ['Google Workspace', 'Hosting', 'Deployment', 'Access management'],
     facts: [
-      { label: 'Role', value: 'Google Workspace and web hosting' },
+      { label: 'Role', value: 'Head of Internal Technical Operations' },
       { label: 'Status', value: 'Active, private development' },
       { label: 'Team', value: 'Website team coordination' },
       { label: 'Repository', value: 'Private' },
@@ -717,7 +717,7 @@ const projectCatalog: Project[] = [
         id: 'foundation',
         heading: 'Why the operational foundation comes first',
         paragraphs: [
-          'Archtech is a developing nonprofit, so the technical problem is larger than producing a website that looks finished on one computer. The organization needs durable ownership of its accounts, a release path that another authorized person can understand, and a recovery route that does not depend on one contributor remembering an undocumented password.',
+          'Arch Narrative is a developing nonprofit, so the technical problem is larger than producing a website that looks finished on one computer. The organization needs durable ownership of its accounts, a release path that another authorized person can understand, and a recovery route that does not depend on one contributor remembering an undocumented password.',
           'I established the Google Workspace environment, coordinate the contributors building the private website, and own the hosting and deployment path. My central responsibility is continuity across people, accounts, source code, hosting, and the eventual public release.'
         ]
       },
@@ -860,7 +860,7 @@ const PROJECT_ORDER = [
   'file-integrity-monitor',
   'secure-file-transfer',
   'ssik',
-  'archtech',
+  'arch-narrative',
   'interactive-portfolio'
 ] as const;
 

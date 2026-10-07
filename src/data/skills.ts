@@ -70,7 +70,7 @@ export const skills: Skill[] = [
   { name: 'SHA-256', category: 'security', usedIn: ['file-integrity-monitor', 'secure-file-transfer'] },
   { name: 'scrypt password records', category: 'security', usedIn: ['secure-file-transfer'] },
   { name: 'File-integrity monitoring', category: 'security', usedIn: ['file-integrity-monitor'] },
-  { name: 'Access control', category: 'security', usedIn: ['secure-file-transfer', 'archtech'] },
+  { name: 'Access control', category: 'security', usedIn: ['secure-file-transfer', 'arch-narrative'] },
   { name: 'Audit logging', category: 'security', usedIn: ['secure-file-transfer', 'ssik'] },
   { name: 'RBAC', category: 'security', usedIn: ['ssik'] },
   { name: 'SSRF defenses', category: 'security', usedIn: ['ssik'] },
@@ -109,7 +109,7 @@ export const skills: Skill[] = [
   { name: 'GitHub', category: 'systems', icon: 'github', usedIn: ['otnow'] },
   { name: 'Cloudflare Pages', category: 'systems', icon: 'cloudflarepages', usedIn: ['interactive-portfolio'] },
   { name: 'GitHub Pages', category: 'systems', icon: 'githubpages', usedIn: ['ssik'] },
-  { name: 'Google Workspace', category: 'systems', icon: 'google', usedIn: ['archtech'] },
+  { name: 'Google Workspace', category: 'systems', icon: 'google', usedIn: ['arch-narrative'] },
   { name: 'Proxmox VE', category: 'systems', icon: 'proxmox', usedIn: [] }
 ];
 

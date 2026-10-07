@@ -80,7 +80,7 @@ export function formatMetric(value: number, separator?: boolean, prefix = '', su
  * Constellation layout: case files sit on the outer bezel (top and bottom rails), ordered so
  * the wires from each category cluster stay as short as possible.
  * ------------------------------------------------------------------------------------------- */
-export const graphTop = ['cisco-networking-labs', 'archtech', 'ssik', 'secure-file-transfer'];
+export const graphTop = ['cisco-networking-labs', 'arch-narrative', 'ssik', 'secure-file-transfer'];
 export const graphBottom = ['interactive-portfolio', 'otnow', 'p2p-messaging', 'file-integrity-monitor'];
 /** Category clusters in reading order: top-left, top-right, bottom-left, bottom-right. */
 export const graphClusters: SkillCategoryId[] = ['networking', 'security', 'systems', 'development'];

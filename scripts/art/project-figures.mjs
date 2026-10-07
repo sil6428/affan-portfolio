@@ -670,9 +670,9 @@ function cisco(A) {
 }
 
 /* ------------------------------------------------------------------------------------------ */
-/* 07 · Archtech — contribute → review → publish → rust, with ownership keys                 */
+/* 07 · Arch Narrative — contribute → review → publish → rust, with ownership keys                 */
 /* ------------------------------------------------------------------------------------------ */
-function archtech(A) {
+function archNarrative(A) {
   const xs = [140, 380, 620, 860];
   const y = 410;
   const box = 150;
@@ -737,7 +737,7 @@ function archtech(A) {
   g += `<path d="M${rb0[0]} ${rb0[1]}C${rb0[0]} ${rb0[1] + 70} ${rb1[0]} ${rb1[1] + 70} ${rb1[0]} ${rb1[1] + 6}" fill="none" stroke="${rgba(A, 0.7)}" stroke-width="1.5" stroke-dasharray="3 6" stroke-linecap="round"/>`;
   g += arrowHead(rb1[0], rb1[1] + 2, -90, 9, A);
   g += label((rb0[0] + rb1[0]) / 2, rb0[1] + 76, 'ROLLBACK', { size: 12, color: A, anchor: 'middle', ls: 0.24 });
-  // release readiness: the four things that must agree (projects.ts, archtech "release" section)
+  // release readiness: the four things that must agree (projects.ts, arch-narrative "release" section)
   g += label(60, 664, 'HOSTING · DEPLOYMENT', { size: 13, color: C.muted });
   g += line(60, 678, 520, 678, 'stroke="rgba(238,238,238,0.14)"');
   ['OWNERSHIP', 'SOURCE STATE', 'HOSTING CONFIGURATION', 'PUBLIC RESULT'].forEach((t, k) => {
@@ -887,7 +887,7 @@ const FIGURES = {
   ssik,
   otnow,
   'cisco-networking-labs': cisco,
-  archtech,
+  'arch-narrative': archNarrative,
   'interactive-portfolio': portfolio
 };
 

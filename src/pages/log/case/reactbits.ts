@@ -13,7 +13,7 @@ export const workBits: RBUsage[] = [
   { component: 'Radar', category: 'Backgrounds', route, where: 'Header — SSIK', role: BACKGROUND_ROLE },
   { component: 'SlicedWaves', category: 'Backgrounds', route, where: 'Header — OTNow', role: BACKGROUND_ROLE },
   { component: 'Threads', category: 'Backgrounds', route, where: 'Header — Cisco Networking Labs', role: BACKGROUND_ROLE },
-  { component: 'Grainient', category: 'Backgrounds', route, where: 'Header — Archtech', role: BACKGROUND_ROLE },
+  { component: 'Grainient', category: 'Backgrounds', route, where: 'Header — Arch Narrative', role: BACKGROUND_ROLE },
   { component: 'Prism', category: 'Backgrounds', route, where: 'Header — Interactive Portfolio', role: BACKGROUND_ROLE },
   {
     component: 'TextType',
