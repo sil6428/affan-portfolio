@@ -47,7 +47,7 @@ export const experience: ExperienceEntry[] = [
     dateLabel: 'Jan 2026 — Present',
     kind: 'operations',
     summary:
-      'Built and manage the internal systems used by 200+ CASIC volunteers, students, staff, and organizational leaders at a developing nonprofit.',
+      'Build and manage internal systems for an organization of 350+ volunteers, including 38 people serving in internal roles.',
     highlights: [
       'Administer Google Workspace, access, permissions, internal tools, repositories, and deployment workflows.',
       'Organizational account ownership and recovery paths that do not depend on one person.',

@@ -63,7 +63,7 @@ export const ASCII_CAT = [
 export const CARD_SUBTITLE = 'Networking & IT Security @ Ontario Tech';
 
 /** Small scattered words on the card. */
-export const CARD_WORDS = ['burpsuite', 'cicids2017', 'malware', 'git', 'chmod 777', 'segfault', 'metasploit', 'hashcat', 'daemon', 'exploit', 'HTTPS', 'ctrl+C', 'phishing', 'TCP/IP', 'pentest', 'rm -rf', 'FIREWALL', 'WIRESHARK', 'honeypot', 'rickroll', 'gateway', 'ping', 'python', '<3', 'IPv4/6', 'blueteam', 'redteam', 'botnet', 'recon', 'Security+', 'crypto', 'subnet', 'kernel', 'learning-log', 'hello_world'];
+export const CARD_WORDS = ['burpsuite', 'malware', 'git', 'chmod 777', 'segfault', 'metasploit', 'hashcat', 'daemon', 'exploit', 'HTTPS', 'ctrl+C', 'phishing', 'TCP/IP', 'pentest', 'rm -rf', 'FIREWALL', 'WIRESHARK', 'honeypot', 'rickroll', 'gateway', 'ping', 'python', '<3', 'IPv4/6', 'blueteam', 'redteam', 'botnet', 'recon', 'Security+', 'crypto', 'subnet', 'kernel', 'learning-log', 'hello_world'];
 
 /** Large outlined words on the card (figlet Small). TNT is the card's single rust word. */
 export const CARD_GLYPHS: { word: string; art: string; rust?: boolean }[] = [

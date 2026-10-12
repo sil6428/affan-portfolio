@@ -177,7 +177,7 @@ function EvidenceTile({ tile, live, mobile }: { tile: Tile; live: boolean; mobil
             <h3 className="text-[1.0625rem] leading-snug font-semibold tracking-[-0.01em] text-fg decoration-fg-dim decoration-1 underline-offset-4 group-hover:underline">
               {project.title}
             </h3>
-            {/* Read right after the title, so the link's name is "OTNow 286 Canvas items organized …". */}
+            {/* Read right after the title, so the link includes OTNow's current measured outcome. */}
             <p className="sr-only">
               {formatted} {metric.label}.
             </p>

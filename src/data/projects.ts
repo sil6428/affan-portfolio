@@ -510,9 +510,9 @@ const projectCatalog: Project[] = [
     ],
     metrics: [
       {
-        value: 450,
-        label: 'Canvas items organized (450+)',
-        detail: 'recorded by opt-in telemetry · non-participant data stays local · October 2026'
+        value: 700,
+        label: 'Canvas items organized (700+)',
+        detail: 'recorded across 12 opt-in reporting installations · non-participant data stays local · October 2026'
       }
     ],
     links: [

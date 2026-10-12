@@ -56,7 +56,7 @@ export const homeBits: RBUsage[] = [
     category: 'Components',
     route: '/',
     where: 'Evidence board tiles',
-    role: 'Rolling digits for measured project outcomes: 286 Canvas items organized across 6 opt-in reporting installations, eight verified file-transfer round trips, 45/45 controlled file changes detected, and a 12-stage review workflow. One overdamped spring drives all columns, odometer style, so no frame on the way up reads past the real value; phones and reduced motion show the final values without a roll. Each tile links to the case file that explains the number and its limits.'
+    role: 'Rolling digits for measured project outcomes: 700+ Canvas items organized across 12 opt-in reporting installations, eight verified file-transfer round trips, 45/45 controlled file changes detected, and a 12-stage review workflow. One overdamped spring drives all columns, odometer style, so no frame on the way up reads past the real value; phones and reduced motion show the final values without a roll. Each tile links to the case file that explains the number and its limits.'
   },
 
   // ~ $ ps --state=running
