@@ -5,6 +5,7 @@ import { projects, type Project, type ProjectMetric } from '@/data/projects';
 import { useReducedMotion } from '@/lib/motion';
 import { useIsMobile } from '@/lib/media';
 import { cn } from '@/lib/cn';
+import { liveOTNowMetric, useOTNowStats } from '@/lib/otnow-stats';
 import RB from '@/components/ui/RB';
 import Counter from '@/components/reactbits/Counter';
 import { SectionHead } from './fx';
@@ -220,6 +221,7 @@ function EvidenceTile({ tile, live, mobile }: { tile: Tile; live: boolean; mobil
 export default function EvidenceSection() {
   const reduced = useReducedMotion();
   const mobile = useIsMobile();
+  const otnowStats = useOTNowStats();
   const [gridRef, seen] = useSeen<HTMLUListElement>('0px 0px -15% 0px');
   // Phones mount at the final values: no roll while the page is being scrolled with a thumb.
   const live = seen || reduced || mobile;
@@ -244,7 +246,11 @@ export default function EvidenceSection() {
           <ul ref={gridRef} className="grid grid-cols-1 gap-3 md:grid-cols-6 md:gap-4 lg:grid-cols-12">
             {tiles.map((tile) => (
               <li key={tile.key} className={tile.layout}>
-                <EvidenceTile tile={tile} live={live} mobile={mobile} />
+                <EvidenceTile
+                  tile={{ ...tile, metric: liveOTNowMetric(tile.project.slug, tile.metric, otnowStats) }}
+                  live={live}
+                  mobile={mobile}
+                />
               </li>
             ))}
           </ul>

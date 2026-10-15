@@ -510,9 +510,10 @@ const projectCatalog: Project[] = [
     ],
     metrics: [
       {
-        value: 700,
-        label: 'Canvas items organized (700+)',
-        detail: 'recorded across 12 opt-in reporting installations · non-participant data stays local · October 2026'
+        value: 907,
+        separator: true,
+        label: 'Canvas items organized',
+        detail: 'across 13 opt-in reporting installations · last verified fallback if the live OTNow aggregate is unavailable'
       }
     ],
     links: [

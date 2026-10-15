@@ -2,6 +2,7 @@ import CountUp from '@/components/reactbits/CountUp';
 import RB from '@/components/ui/RB';
 import { useReducedMotion } from '@/lib/motion';
 import { cn } from '@/lib/cn';
+import { liveOTNowMetric, useOTNowStats } from '@/lib/otnow-stats';
 import type { Project, ProjectMetric } from '@/data/projects';
 import { CoordLabel } from './shared';
 
@@ -14,7 +15,8 @@ const fmt = (m: ProjectMetric) =>
  */
 export default function Metrics({ project, code }: { project: Project; code: string }) {
   const reduced = useReducedMotion();
-  const list = project.metrics;
+  const otnowStats = useOTNowStats();
+  const list = project.metrics.map((metric) => liveOTNowMetric(project.slug, metric, otnowStats));
   if (!list.length) return null;
   const odd = list.length % 2 === 1;
 

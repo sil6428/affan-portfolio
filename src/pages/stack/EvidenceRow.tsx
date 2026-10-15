@@ -5,6 +5,7 @@ import RB from '@/components/ui/RB';
 import Section from '@/components/ui/Section';
 import { cn } from '@/lib/cn';
 import { thumbSrc, THUMB_SIZE } from '@/lib/art';
+import { liveOTNowMetric, useOTNowStats } from '@/lib/otnow-stats';
 import { evidence, formatMetric } from './data';
 import { SectionHead, StackLabel } from './parts';
 
@@ -22,6 +23,7 @@ const LG_COLS: Record<number, string> = {
 const lastOdd = evidence.length % 2 === 1;
 
 export default function EvidenceRow() {
+  const otnowStats = useOTNowStats();
   return (
     <Section id="evidence" aria-labelledby="evidence-title" className="pb-dock">
       <StackLabel index="04" path="~/stack/evidence" />
@@ -42,7 +44,8 @@ export default function EvidenceRow() {
       />
 
       <RB name="SpotlightCard" className={cn('grid gap-4 sm:grid-cols-2', LG_COLS[evidence.length] ?? 'lg:grid-cols-4')}>
-        {evidence.map(({ project, metric, skills }, i) => {
+        {evidence.map(({ project, metric: fallbackMetric, skills }, i) => {
+          const metric = liveOTNowMetric(project.slug, fallbackMetric, otnowStats);
           const value = formatMetric(metric.value, metric.separator, metric.prefix, metric.suffix);
           const long = value.length > 6;
           return (
